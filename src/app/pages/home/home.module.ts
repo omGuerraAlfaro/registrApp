@@ -11,6 +11,7 @@ import player from 'lottie-web' ;
 //componentes
 import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
 import { InicioComponent } from 'src/app/components/inicio/inicio.component';
+import { AsistenciaComponent } from 'src/app/components/asistencia/asistencia.component';
 export function playerFactory(){
   return player
 }
@@ -23,6 +24,6 @@ export function playerFactory(){
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, PerfilComponent, InicioComponent]
+  declarations: [HomePage, PerfilComponent, InicioComponent, AsistenciaComponent]
 })
 export class HomePageModule {}

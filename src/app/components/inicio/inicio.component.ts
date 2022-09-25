@@ -41,7 +41,6 @@ export class InicioComponent implements OnInit {
   created(animation:AnimationItem) {
     console.log(animation);
     this.animation = animation;
-    animation.playSpeed = 5;
   }
 
   //functionPlayAnimation
