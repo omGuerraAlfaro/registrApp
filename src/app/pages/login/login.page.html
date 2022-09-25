@@ -1,0 +1,43 @@
+<ion-content class="fondo">  
+  <div class="logo">
+    <img #logoAnimation mat-card-sm-image src="../../../assets/img/LogoresgistrApp.svg" />
+  </div>
+  <h1 class="titulo"><b>¡Bienvenido!</b></h1>
+  <ion-card class="cardFondo">
+    <ion-card-content>
+      <!-- User -->
+      <ion-item lines="none">             
+        <ion-input
+          placeholder="Ingresa tu correo aquí"
+          type="text"
+          [(ngModel)]="user.usuario"
+          minlength="3"
+          maxlength="8"
+        ></ion-input>
+      </ion-item>
+      <br>
+      <!-- Password -->
+      <ion-item lines="none">        
+        <ion-input
+          placeholder="Ingresa tu contraseña aquí"
+          type="password"
+          [(ngModel)]="user.password"
+          minlength="4"
+          maxlength="4"
+        ></ion-input>
+      </ion-item>
+      <br>
+      <!-- buttons -->
+      <ion-row>
+        <ion-col>
+          <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
+          <ion-button class="buttonLogin" (click)="ingresar()" expand="full" color="dark" shape="round" >Ingresar</ion-button>
+        </ion-col>
+        <ion-col>
+          <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
+          <ion-button class="buttonLogin" (click)="recuperar()" color="dark" expand="full" shape="round" >Recuperar Contraseña</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>  
+</ion-content>

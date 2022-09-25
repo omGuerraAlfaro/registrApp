@@ -1,0 +1,29 @@
+<ion-content class="fondo">
+  <div class="titleAnimado">
+    <h1 class="titulo" #animar2>
+      <b>¡Bienvenido <span class="mayusculas">{{user.usuario}}</span>! </b>
+    </h1>
+  </div>
+
+  <div>
+    <ng-lottie
+      [options]="options"
+      (animationCreated)="created($event)"
+    ></ng-lottie>
+  </div>
+
+  <!-- buttons -->
+  <ion-row>
+    <ion-col>
+      <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
+      <ion-button
+        class="buttonLogin"
+        (click)="ircamara()"
+        expand="full"
+        color="dark"
+        shape="round"
+        >Registrar asistencia</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-content>

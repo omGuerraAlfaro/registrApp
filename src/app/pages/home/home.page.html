@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>registrApp</ion-title>
+    <div class="iconLogout">
+      <ion-button
+        class="buttonLogin"
+        (click)="irhome()"
+        color="dark"
+        ><img src="../../../assets/icon/logout_black_24dp.svg" alt="" />
+      </ion-button>
+    </div>  
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- Default Segment -->
+    <ion-segment value="inicio" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="inicio">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-segment-button>      
+    </ion-segment>
+  </ion-toolbar>  
+</ion-footer>
