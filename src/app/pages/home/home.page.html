@@ -1,17 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registrApp</ion-title>
-    <div class="iconLogout">
-      <ion-button
-        class="buttonLogin"
-        (click)="irhome()"
-        color="dark"
-        ><img src="../../../assets/icon/logout_black_24dp.svg" alt="" />
-      </ion-button>
-    </div>  
+  <ion-toolbar class="fondo">
+    <ion-button class="buttonLogin" (click)="irhome()" color="dark" size="small">
+      <img src="../../../assets/icon/logout_black_24dp.svg" alt="" />
+    </ion-button>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <ion-router-outlet></ion-router-outlet>
@@ -26,7 +19,7 @@
       </ion-segment-button>
       <ion-segment-button value="inicio">
         <ion-icon name="home-outline"></ion-icon>
-      </ion-segment-button>      
+      </ion-segment-button>
     </ion-segment>
-  </ion-toolbar>  
+  </ion-toolbar>
 </ion-footer>

@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 //Lottie
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web' ;
+//componentes
 import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
 import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 export function playerFactory(){

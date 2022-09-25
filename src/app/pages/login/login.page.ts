@@ -76,7 +76,7 @@ export class LoginPage implements OnInit {
   ngAfterViewInit() {
     const logoAnimation = this.animationCtrl.create()
       .addElement(this.logoAnimation.nativeElement)
-      .duration(1000)
+      .duration(500)
       .iterations(1)
       .beforeStyles({
         opacity: 0.2
@@ -84,7 +84,8 @@ export class LoginPage implements OnInit {
       .afterClearStyles(['opacity'])
       .keyframes([
         { offset: 0, transform: 'scale(0.5)' },
-        { offset: 0.5, transform: 'scale(1)' },
+        { offset: 1, transform: 'scale(1)' },
+        
       ])
 
     const animar = this.animationCtrl.create()

@@ -11,40 +11,37 @@ import { AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./inicio.component.scss'],
 })
 export class InicioComponent implements OnInit {
-  
+
   private animation: AnimationItem;
-  
+
   user = {
     usuario: "",
     password: ""
   }
 
-  @ViewChild('animar2', { read: ElementRef, static: true }) animar2: ElementRef;  
+  @ViewChild('animar2', { read: ElementRef, static: true }) animar2: ElementRef;
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController: AlertController, private animationCtrl: AnimationController, private ngZone: NgZone) { 
-    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
-      if (this.router.getCurrentNavigation().extras.state) {
-        // Validamos que en la navegacion actual tenga extras       
-        this.user = this.router.getCurrentNavigation().extras.state.user;
-        // Si tiene extra rescata lo enviado         
-        console.log(this.user) // Muestra por consola lo traido     
-      } else { this.router.navigate(["/home/inicio"]) } // Si no tiene extra la navegacion actual navegar al login    
-    });
+  constructor(public alertController: AlertController, private animationCtrl: AnimationController, private ngZone: NgZone, private router: Router,) {
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
   //animacionLottie
   options: AnimationOptions = {
     path: 'assets/animations/3.json',
   }
-  
+
+  options2: AnimationOptions = {
+    path: 'assets/animations/2.json',
+  }
+
   //Capturar Datos de la Animacion (para ser controlados) envio lista a la consola. 
-  created(animation: AnimationItem) {
-    animation.autoplay = true;
+  created(animation:AnimationItem) {
     console.log(animation);
     this.animation = animation;
+    animation.playSpeed = 5;
   }
 
   //functionPlayAnimation
@@ -88,14 +85,8 @@ export class InicioComponent implements OnInit {
     await alert.present();
   }
 
-  
-  
-  //segment info
-  segmentChanged($event){
-    let direccion=$event.detail.value;
-    console.log(direccion);
-    this.router.navigate(['home/'+direccion]);
-  }
+
+
 
 
 }
