@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationController } from '@ionic/angular';
-import { AlumnoService } from 'src/app/services/alumno.service';
+import { AlumnoService } from 'src/app/services/alumno.service'; 
 
 
 
