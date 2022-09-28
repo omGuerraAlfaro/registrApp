@@ -25,7 +25,7 @@ export class AsistenciaComponent implements OnInit {
     grabCursor: true,
   }
 
-  alumno = [];
+  alumnos = [];
 
 
   @ViewChild('anim', { read: ElementRef, static: true }) animar2: ElementRef;
@@ -36,7 +36,9 @@ export class AsistenciaComponent implements OnInit {
 
   //services
   ngOnInit() {
-    this.alumno = this.alumnoService.getCart();
+    this.alumnos = this.alumnoService.getProducts();
+    console.log(this.alumnos);
+    
   }
 
 
