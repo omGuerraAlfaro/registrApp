@@ -5,66 +5,19 @@
 
   <ion-slides [options]="slidesConfig" #mySlider pager="true" class='my-slides'>
     <!-- 1 -->
-    <ion-slide>
+    <ion-slide *ngFor="let id of asignaturas; let i=index">
       <ion-card class="card">
         <ng-lottie
           class="lottie"
-          [options]="options"
+          [options]= "options2"
           (animationCreated)="created($event)"
         ></ng-lottie>
         <ion-card-header>
           <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-          <ion-card-title class="title">asign:nombre</ion-card-title>
+          <ion-card-title size="small" class="title">{{id.name}}</ion-card-title>
         </ion-card-header>
-        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
+        <ion-card-content> 80% (10 de {{id.totalClass}} clases) </ion-card-content>
       </ion-card>
-    </ion-slide>
-    <!-- 2 -->
-    <ion-slide>
-      <ion-card>
-        <ng-lottie
-          class="lottie"
-          [options]="options2"
-          (animationCreated)="created($event)"
-        ></ng-lottie>
-        <ion-card-header>
-          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-          <ion-card-title class="title">asign:nombre</ion-card-title>
-        </ion-card-header>
-        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <!-- 3 -->
-    <ion-slide>
-      <ion-card>
-        <ng-lottie
-          class="lottie"
-          [options]="options3"
-          (animationCreated)="created($event)"
-        ></ng-lottie>
-        <ion-card-header>
-          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-          <ion-card-title class="title">asign:nombre</ion-card-title>
-        </ion-card-header>
-        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <!-- 4 -->
-    <ion-slide>
-      <ion-card>
-        <ng-lottie
-          class="lottie"
-          [options]="options4"
-          (animationCreated)="created($event)"
-        ></ng-lottie>
-        <ion-card-header>
-          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-          <ion-card-title class="title">asign:nombre</ion-card-title>
-        </ion-card-header>
-        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-      </ion-card>
-    </ion-slide>    
-  </ion-slides >
-
-  
+    </ion-slide>      
+  </ion-slides > 
 </ion-content>

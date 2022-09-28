@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationController } from '@ionic/angular';
 import { AlumnoService } from 'src/app/services/alumno.service'; 
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 
 
@@ -25,18 +26,21 @@ export class AsistenciaComponent implements OnInit {
     grabCursor: true,
   }
 
-  alumno = [];
+  alumnos = [];
+  asignaturas = [];
 
 
   @ViewChild('anim', { read: ElementRef, static: true }) animar2: ElementRef;
 
-  constructor(private alumnoService: AlumnoService, private router: Router, private animationCtrl: AnimationController) { }
+  constructor(private alumnoService: AlumnoService, private asignaturaService: AsignaturasService, private router: Router, private animationCtrl: AnimationController) { }
 
 
 
   //services
-  ngOnInit() {
-    this.alumno = this.alumnoService.getCart();
+  ngOnInit() {    
+    //info service asignatura
+    this.asignaturas = this.asignaturaService.getProducts();
+    console.log(this.asignaturas);       
   }
 
 
