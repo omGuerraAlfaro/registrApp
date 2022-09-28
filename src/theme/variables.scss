@@ -41,9 +41,14 @@ $app-theme: mat.define-light-theme((
   --background: URL(../assets/img/fondo1.svg); // Replace this with color of your choice
 }
 
+.fondo2{
+  background-color: #878787;
+}
+
 ion-item{
   --ion-color-trans:transparent;
 }
+
 
 
 :root {

@@ -2,13 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
+import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   /**
    * Se genera el modelo user con dos claves
    * cada clave tiene su valor inicial
@@ -24,10 +25,7 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router, public toastController: ToastController, private animationCtrl: AnimationController,) { } // Se debe instanciar
 
-  ngOnInit() {
-  }
-
-
+  
   ingresar() {
     if (this.validateModel(this.user)) {
       // Se declara e instancia un elemento de tipo NavigationExtras
@@ -76,7 +74,7 @@ export class LoginPage implements OnInit {
   ngAfterViewInit() {
     const logoAnimation = this.animationCtrl.create()
       .addElement(this.logoAnimation.nativeElement)
-      .duration(1000)
+      .duration(500)
       .iterations(1)
       .beforeStyles({
         opacity: 0.2
@@ -84,7 +82,8 @@ export class LoginPage implements OnInit {
       .afterClearStyles(['opacity'])
       .keyframes([
         { offset: 0, transform: 'scale(0.5)' },
-        { offset: 0.5, transform: 'scale(1)' },
+        { offset: 1, transform: 'scale(1)' },
+        
       ])
 
     const animar = this.animationCtrl.create()

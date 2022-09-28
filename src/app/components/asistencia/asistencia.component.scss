@@ -1,0 +1,33 @@
+.contentTitle {
+  margin-top: 20px;
+  .titulo {
+    font-size: 45px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(120deg, #1d1d1f 0%, #1d1d1f98 100%);
+    letter-spacing: -0.014em;
+  }
+}
+
+.subt {
+  margin-bottom: -8px;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.lottie {
+  width: 100px;
+}
+
+.swiper-slide, .swiper-pagination {
+    bottom: -15px !important;
+}
+
+ion-slides {
+   --bullet-background: rgb(114, 113, 113);
+   --bullet-background-active: rgb(60, 20, 207);
+   margin-top: -30px;
+}

@@ -1,5 +1,5 @@
 import { Component,} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 
@@ -10,8 +10,21 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {   
 
-  constructor(private router: Router, public alertController: AlertController) {    
-    this.router.navigate(['home/inicio']);
+  user = {
+    usuario: "",
+    password: ""
+  }
+
+  constructor(private router: Router, public alertController: AlertController, private activeroute: ActivatedRoute) {    
+    
+    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
+      if (this.router.getCurrentNavigation().extras.state) {
+        // Validamos que en la navegacion actual tenga extras       
+        this.user = this.router.getCurrentNavigation().extras.state.user;
+        // Si tiene extra rescata lo enviado         
+        console.log(this.user) // Muestra por consola lo traido     
+      } else { this.router.navigate(["/home/inicio"]) } // Si no tiene extra la navegacion actual navegar al login    
+    });
   }
 
  
