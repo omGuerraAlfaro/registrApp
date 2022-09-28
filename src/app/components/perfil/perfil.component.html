@@ -3,13 +3,13 @@
     <img src="../../../assets/img/user.svg" width="180px" class="logoPerfil">     
   </div>  
   <ion-card>
-    <ion-card-header>
+    <ion-card-header *ngFor="let alumno of alumnos; let i=index">
       <ion-card-subtitle class="subt">Nombre Alumno:</ion-card-subtitle>
-      <ion-card-title class="title">user:usuario</ion-card-title>
+      <h2 class="title">{{alumno.name}}</h2>
       <ion-card-subtitle class="subt">Carrera:</ion-card-subtitle>
-      <ion-card-title class="title">user:carrera</ion-card-title>
+      <h2 class="title">{{alumno.carrera}}</h2>
       <ion-card-subtitle class="subt">Sede:</ion-card-subtitle>
-      <ion-card-title class="title">user:sede</ion-card-title>
+      <h2 class="title">{{alumno.sede}}</h2>
     </ion-card-header>
   </ion-card>
 </ion-content>

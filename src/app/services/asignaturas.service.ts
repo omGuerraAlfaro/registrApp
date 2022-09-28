@@ -7,30 +7,29 @@ export class AsignaturasService {
 
   private dataAsignatura = [
     {
-      asignaturas: [
-        {
-          id: 0,
-          name: 'Programación Movil',
-          totalClass: '20',
-        },
-        { 
-          id: 1, 
-          name: 'Arquitectura en Software', 
-          totalClass: '15', 
-        },
-        { 
-          id: 2, 
-          name: 'Calidad de Software', 
-          totalClass: '30', 
-        },
-        { id: 3, 
-          name: 'Estadistica Descriptiva', 
-          totalClass: '10' 
-        },
-      ],
+      id: 0,
+      name: 'Programación Movil',
+      totalClass: '20',
+      idLottie: 'options',
     },
-
-
+    {
+      id: 1,
+      name: 'Arquitectura en Software',
+      totalClass: '15',
+      idLottie: 'options1',
+    },
+    {
+      id: 2,
+      name: 'Calidad de Software',
+      totalClass: '30',
+      idLottie: 'options2',
+    },
+    {
+      id: 3,
+      name: 'Estadistica Descriptiva',
+      totalClass: '10',
+      idLottie: 'options3',
+    },
   ];
 
   constructor() { }

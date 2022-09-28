@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumnoService } from 'src/app/services/alumno.service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {}
+  alumnos = [];
+  constructor(private alumnoService: AlumnoService) { }
+
+  ngOnInit() {
+    //info service alumnos
+    this.alumnos = this.alumnoService.getProducts();
+    console.log(this.alumnos);
+  }
 
 }
