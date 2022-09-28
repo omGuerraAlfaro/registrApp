@@ -1,16 +1,19 @@
 <ion-content class="fondo">
-  <div class="titleAnimado">
-    <h1 class="titulo" #animar2>
-      <b>¡Bienvenido <span class="mayusculas">{{user.usuario}}</span>! </b>
+  
+
+  <div class="lottie">
+    <div class="titleAnimado">
+    <h1 class="titulo text1 ion-text-center" #animar2>
+      <b>¡Bienvenido <span class="mayusculas">{{ user.usuario }}</span>!</b>
     </h1>
   </div>
-
-  <div>
     <ng-lottie
       [options]="options"
       (animationCreated)="created($event)"
     ></ng-lottie>
-  </div> 
+  </div>
+
+  
 
   <!-- buttons -->
   <ion-row>
@@ -22,8 +25,12 @@
         expand="full"
         color="dark"
         shape="round"
-        >Registrar asistencia</ion-button
+        ><span class="textBnt">Registrar Asistencia</span> </ion-button
       >
     </ion-col>
   </ion-row>
+
+
+
 </ion-content>
+

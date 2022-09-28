@@ -2,13 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
+import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   /**
    * Se genera el modelo user con dos claves
    * cada clave tiene su valor inicial
@@ -24,10 +25,7 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router, public toastController: ToastController, private animationCtrl: AnimationController,) { } // Se debe instanciar
 
-  ngOnInit() {
-  }
-
-
+  
   ingresar() {
     if (this.validateModel(this.user)) {
       // Se declara e instancia un elemento de tipo NavigationExtras

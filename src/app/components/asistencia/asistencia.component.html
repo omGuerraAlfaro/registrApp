@@ -1,55 +1,70 @@
 <ion-content class="fondo">
-  <h1 class="titulo">Asistencia</h1>
-  <!-- 1 -->
-  <ion-card>
-    <ng-lottie
-      class="lottie"
-      [options]="options"
-      (animationCreated)="created($event)"
-    ></ng-lottie>
-    <ion-card-header>
-      <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-      <ion-card-title class="title">asign:nombre</ion-card-title>
-    </ion-card-header>
-    <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-  </ion-card>
-  <!-- 2 -->
-  <ion-card>
-    <ng-lottie
-      class="lottie"
-      [options]="options2"
-      (animationCreated)="created($event)"
-    ></ng-lottie>
-    <ion-card-header>
-      <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-      <ion-card-title class="title">asign:nombre</ion-card-title>
-    </ion-card-header>
-    <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-  </ion-card>
-  <!-- 3 -->
-  <ion-card>
-    <ng-lottie
-      class="lottie"
-      [options]="options3"
-      (animationCreated)="created($event)"
-    ></ng-lottie>
-    <ion-card-header>
-      <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-      <ion-card-title class="title">asign:nombre</ion-card-title>
-    </ion-card-header>
-    <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-  </ion-card>
-  <!-- 4 -->
-  <ion-card>
-    <ng-lottie
-      class="lottie"
-      [options]="options4"
-      (animationCreated)="created($event)"
-    ></ng-lottie>
-    <ion-card-header>
-      <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-      <ion-card-title class="title">asign:nombre</ion-card-title>
-    </ion-card-header>
-    <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
-  </ion-card>
+  <h2 class="ion-text-center contentTitle" #anim>
+    <span class="titulo">Asistencia</span>
+  </h2>
+
+  <ion-slides [options]="slidesConfig" #mySlider pager="true" class='my-slides'>
+    <!-- 1 -->
+    <ion-slide>
+      <ion-card class="card">
+        <ng-lottie
+          class="lottie"
+          [options]="options"
+          (animationCreated)="created($event)"
+        ></ng-lottie>
+        <ion-card-header>
+          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
+          <ion-card-title class="title">asign:nombre</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <!-- 2 -->
+    <ion-slide>
+      <ion-card>
+        <ng-lottie
+          class="lottie"
+          [options]="options2"
+          (animationCreated)="created($event)"
+        ></ng-lottie>
+        <ion-card-header>
+          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
+          <ion-card-title class="title">asign:nombre</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <!-- 3 -->
+    <ion-slide>
+      <ion-card>
+        <ng-lottie
+          class="lottie"
+          [options]="options3"
+          (animationCreated)="created($event)"
+        ></ng-lottie>
+        <ion-card-header>
+          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
+          <ion-card-title class="title">asign:nombre</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <!-- 4 -->
+    <ion-slide>
+      <ion-card>
+        <ng-lottie
+          class="lottie"
+          [options]="options4"
+          (animationCreated)="created($event)"
+        ></ng-lottie>
+        <ion-card-header>
+          <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
+          <ion-card-title class="title">asign:nombre</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> 80% (10 de 12 clases) </ion-card-content>
+      </ion-card>
+    </ion-slide>    
+  </ion-slides >
+
+  
 </ion-content>

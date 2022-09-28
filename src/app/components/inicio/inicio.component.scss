@@ -1,8 +1,31 @@
-.titleAnimado{
-    margin-top: 20px;
+.titleAnimado {
+  margin-top: 20px;
 }
 
-.mayusculas{
-    text-transform: uppercase;
+.mayusculas {
+  text-transform: uppercase;
+}
+
+.lottie {
+  display: flexbox;
+  flex: auto;
+  border: none;
+  width: 200px;
+  margin-left: 60px;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.text1 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #878787;
+}
+
+
+.textBnt{
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
 }
 
