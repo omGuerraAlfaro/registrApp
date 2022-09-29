@@ -37,7 +37,7 @@ export class LoginPage {
       this.router.navigate(['/home/inicio'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
     }
     else {
-      this.presentToast("Falta ingresar " + this.field, 5000);
+      this.presentToast("Falta ingresar " + this.field, 3000);
     }
   }
 
@@ -62,6 +62,7 @@ export class LoginPage {
     return true;
   }
 
+  //toast
   async presentToast(msg: string, duracion?: number) {
     const toast = await this.toastController.create({
       message: msg,
@@ -70,7 +71,7 @@ export class LoginPage {
     toast.present();
   }
 
-
+  //animacion logo
   ngAfterViewInit() {
     const logoAnimation = this.animationCtrl.create()
       .addElement(this.logoAnimation.nativeElement)
