@@ -5,6 +5,9 @@ import { AnimationController } from '@ionic/angular';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
+//capacitor
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -23,7 +26,10 @@ export class InicioComponent {
 
 /*   @ViewChild('animar2', { read: ElementRef, static: true }) animar2: ElementRef; */
 
-  constructor(public alertController: AlertController, private animationCtrl: AnimationController, private ngZone: NgZone, private router: Router, private activeroute: ActivatedRoute) {
+  constructor(
+    public alertController: AlertController,
+      private router: Router, 
+      private activeroute: ActivatedRoute,) {
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
       if (this.router.getCurrentNavigation().extras.state) {
         // Validamos que en la navegacion actual tenga extras       
