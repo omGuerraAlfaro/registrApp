@@ -29,6 +29,8 @@
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
+    "@lottiefiles/lottie-interactivity": "^1.6.1",
+    "@lottiefiles/lottie-player": "^1.5.7",
     "ionicons": "^6.0.3",
     "lottie-web": "^5.9.6",
     "ngx-lottie": "^9.0.1",

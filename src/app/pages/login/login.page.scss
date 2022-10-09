@@ -1,14 +1,9 @@
-*{
-  margin-top: 0px;
-  margin-bottom: 0;
-  
-}
-
-.ion-page, #root, body, ion-content.background {
+.ion-page,
+#root,
+body,
+ion-content.background {
   --background: url(../../../assets/img/fondo1.svg) no-repeat fixed;
 }
-
-
 
 
 .body img {
@@ -19,8 +14,8 @@
   padding-bottom: 0;
 }
 
-.logo{ 
-  justify-content: center;  
+.logo {
+  justify-content: center;
   //width="40" height="40"
 }
 
@@ -33,32 +28,33 @@
   text-align: center;
   padding: 0;
   letter-spacing: 0.5rem;
+  color: #ffffff;
 }
 
-.inputt1{
+.inputt1 {
   background-color: rgba(0, 0, 0, 0.336);
   z-index: 1;
   margin-bottom: 10px;
   border-radius: 15px;
 }
 
-.inputt2{
+.inputt2 {
   background-color: rgba(168, 168, 168, 0.068);
   z-index: 1;
   border-radius: 15px;
   margin-bottom: 10px;
 }
 
-.label1{
+.label1 {
   font-size: 16px;
   letter-spacing: 0.08rem;
 }
 
-.footer1{
+.footer1 {
   background-color: aliceblue;
 }
 
-.buttonLogin{
+.buttonLogin {
   color: rgb(255, 255, 255);
   letter-spacing: 0.08rem;
 }

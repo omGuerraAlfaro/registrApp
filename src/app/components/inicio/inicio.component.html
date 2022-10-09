@@ -1,30 +1,37 @@
 <ion-content class="background">
-  <ion-card class="ion-text-center cardCenter">
-    <div class="titleAnimado">
-      <h1 class="titulo text1 ion-text-center" #animar2>
-        <b
-          >¡Bienvenido <span class="mayusculas">{{ user.usuario }}</span
-          >!</b
-        >
-      </h1>
+  <ion-cards class="ion-padding">
+    <ion-card class="ion-text-center cardCenter">
+      <div class="titleAnimado">
+        <h1 class="titulo text1 ion-text-center" #animar2>
+          <b
+            >¡Bienvenido <span class="mayusculas">{{ user.usuario }}</span>!</b>
+        </h1>
+      </div>
+      <ng-lottie
+        [options]="options"
+        (animationCreated)="created($event)"
+      ></ng-lottie>
+    </ion-card>
+
+    <br>
+    <br>
+    <br>
+    
+    <div class="ion-text-center">
+      <ion-row>
+        <ion-col size="12">
+          <button
+            class="buttonLogin"
+            (click)="ircamara()"
+            color="primary"
+            shape="round">
+            <ion-icon name="qr-code-outline"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col size="12">
+          <span class="textBnt">Registra tu Asistencia!</span>
+        </ion-col>
+      </ion-row>
     </div>
-    <ng-lottie
-      [options]="options"
-      (animationCreated)="created($event)"
-    ></ng-lottie>
-    <!-- buttons -->
-    <ion-row>
-      <ion-col>
-        <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
-        <ion-button
-          class="buttonLogin"
-          (click)="ircamara()"
-          expand="full"
-          color="dark"
-          shape="round"
-          ><span class="textBnt">Registrar Asistencia</span>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  </ion-cards>
 </ion-content>

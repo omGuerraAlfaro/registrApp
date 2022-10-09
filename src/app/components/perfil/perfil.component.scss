@@ -1,13 +1,13 @@
 .ion-page, #root, body, ion-content.background {
-    --background: url(../../../assets/img/fondo1.svg) no-repeat fixed;
+    --background: url(../../../assets/img/fondo3.svg) no-repeat fixed;
 }
 
 .subt{
-    margin-bottom: -8px;
+    color: #ffff;
 }
 
 .title{
-    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
 }
 
 ion-content {
@@ -17,3 +17,12 @@ ion-content {
     justify-content: center;
     height: 100vh;
 }
+
+.cardCenter {
+    width: 80%; // adjust width on your ion-card suitable on your screen
+    display: block;
+    margin: 0 auto;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.233);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  }
