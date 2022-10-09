@@ -1,9 +1,9 @@
-<ion-content class="fondo">
+<ion-content class="background" >
   <h2 class="ion-text-center contentTitle" #anim>
     <span class="titulo">Asistencia</span>
   </h2>
 
-  <ion-slides [options]="slidesConfig" #mySlider pager="true" class='my-slides'>
+  <ion-slides [options]="slidesConfig" pager="true">
     <!-- 1 -->
     <ion-slide *ngFor="let id of asignaturas; let i=index">
       <ion-card class="card">
@@ -17,8 +17,9 @@
           <h4 class="title">{{id.name}}</h4>
           <ion-card-subtitle class="subt">Profesor/a: </ion-card-subtitle>
           <h4 size="small" class="title">{{id.nameProfe}}</h4>
+          <ion-card-subtitle> 80% (10 de {{id.totalClass}} clases) </ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content> 80% (10 de {{id.totalClass}} clases) </ion-card-content>
+        
       </ion-card>
     </ion-slide>      
   </ion-slides > 

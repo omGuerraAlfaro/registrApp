@@ -4,9 +4,12 @@
   
 }
 
-ion-content.background{
-  --background: url(../../../assets/img/fondo1.svg) 0 0/100% 100% no-repeat;
+.ion-page, #root, body, ion-content.background {
+  --background: url(../../../assets/img/fondo1.svg) no-repeat fixed;
 }
+
+
+
 
 .body img {
   position: fixed;

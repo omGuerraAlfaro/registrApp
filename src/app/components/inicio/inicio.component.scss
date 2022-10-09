@@ -1,3 +1,15 @@
+.ion-page, #root, body, ion-content.background {
+  --background: url(../../../assets/img/fondo1.svg) no-repeat fixed;
+}
+
+.cardCenter{
+  
+    width:80%; // adjust width on your ion-card suitable on your screen
+    display:block;
+    margin: 0 auto;
+
+}
+
 .titleAnimado {
   margin-top: 20px;
 }

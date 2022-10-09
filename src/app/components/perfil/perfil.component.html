@@ -1,8 +1,11 @@
-<ion-content class="fondo">
-  <div>
-    <img src="../../../assets/img/user.svg" width="180px" class="logoPerfil">     
-  </div>  
+<ion-content class="background">
+  
+     
+   
   <ion-card>
+    <ion-card-header no-padding class="ion-text-center">
+      <img src="../../../assets/img/user.svg" width="180px" class="logoPerfil">  
+    </ion-card-header>    
     <ion-card-header *ngFor="let alumno of alumnos; let i=index">
       <ion-card-subtitle class="subt">Nombre Alumno:</ion-card-subtitle>
       <h2 class="title">{{alumno.name}}</h2>
