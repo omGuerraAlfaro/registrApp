@@ -1,3 +1,33 @@
+.ion-page,
+#root,
+body,
+ion-content.background {
+  --background: url(../../../assets/img/fondo1.svg) no-repeat fixed;
+}
+
+.cardCenter {
+  width: 80%; // adjust width on your ion-card suitable on your screen
+  display: block;
+  margin: 0 auto;
+  border-radius: 80px;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+
+.buttonLogin {
+  margin-top: 310px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; 
+  ion-icon {
+    font-size: 90px;
+  } 
+}
+
 .titleAnimado {
   margin-top: 20px;
 }
@@ -6,26 +36,64 @@
   text-transform: uppercase;
 }
 
-.lottie {
-  display: flexbox;
-  flex: auto;
-  border: none;
-  width: 200px;
-  margin-left: 60px;
-  background-color: #ffffff;
-  border-radius: 15px;
-}
-
 .text1 {
   font-size: 30px;
   font-weight: 600;
-  color: #878787;
+  color: #ffffff;
 }
 
-
-.textBnt{
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
+.textBnt {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
+//Colours
+/* $green: #2ecc71;
+$red: #e74c3c;
+$blue: #3498db;
+$yellow: #f1c40f;
+$purple: #8e44ad;
+$turquoise: #1abc9c;
+ */
+
+// Basic Button Style
+/* .btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid $red;
+  border-radius: 0.6em;
+  color: $red;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    outline: 0;
+  }
+} */
+
+//BUTTON 3
+/* .third {
+  border-color: $blue;
+  color: #fff;
+  box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
+  transition: all 150ms ease-in-out;
+  
+  &:hover {
+    box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
+  }
+} */

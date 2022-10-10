@@ -37,9 +37,7 @@ $app-theme: mat.define-light-theme((
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
-.fondo {
-  --background: URL(../assets/img/fondo1.svg); // Replace this with color of your choice
-}
+
 
 .fondo2{
   background-color: #878787;
@@ -287,5 +285,5 @@ ion-item{
   }
 }
 
-html, body { height: 100%; }
+html, body { height: 100%; width: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

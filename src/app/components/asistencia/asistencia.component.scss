@@ -1,3 +1,8 @@
+.ion-page, #root, body, ion-content.background {
+  --background: url(../../../assets/img/fondo2.svg) no-repeat fixed;
+}
+
+
 .contentTitle {
   margin-top: 20px;
   .titulo {
@@ -29,6 +34,5 @@
 ion-slides {
    --bullet-background: rgb(114, 113, 113);
    --bullet-background-active: rgb(60, 20, 207);
-   margin-top: -30px;
-   
+   margin-top: -30px;   
 }

@@ -1,11 +1,26 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="irhome()" fill="clear" color="dark">
+        <ion-icon name="exit-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>not-found</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<ion-card>
-  <h1>NADA POR AQUI CODE: 404</h1>
-</ion-card>
+<ion-content class="background">
+  <ion-cards id="container" >
+    <ion-card class="ion-text-center cardCenter">
+      <div class="titleAnimado">
+        <h1 class="titulo text1 ion-text-center" #animar2>
+          <b>Oops!</b>
+        </h1>
+      </div>
+      <ng-lottie
+        [options]="options"
+        (animationCreated)="created($event)"
+      ></ng-lottie>
+    </ion-card>
+  </ion-cards>
 </ion-content>

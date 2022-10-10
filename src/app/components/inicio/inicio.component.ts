@@ -1,9 +1,12 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AnimationController } from '@ionic/angular';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+
+//capacitor
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner'
+
 
 @Component({
   selector: 'app-inicio',
@@ -19,11 +22,15 @@ export class InicioComponent {
     password: ""
   }
 
-  
+  scannedResult: any;
+  content_visibility = '';
 
-/*   @ViewChild('animar2', { read: ElementRef, static: true }) animar2: ElementRef; */
+  /*   @ViewChild('animar2', { read: ElementRef, static: true }) animar2: ElementRef; */
 
-  constructor(public alertController: AlertController, private animationCtrl: AnimationController, private ngZone: NgZone, private router: Router, private activeroute: ActivatedRoute) {
+  constructor(
+    public alertController: AlertController,
+    private router: Router,
+    private activeroute: ActivatedRoute,) {
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
       if (this.router.getCurrentNavigation().extras.state) {
         // Validamos que en la navegacion actual tenga extras       
@@ -31,11 +38,66 @@ export class InicioComponent {
         // Si tiene extra rescata lo enviado         
         console.log(this.user) // Muestra por consola lo traido     
       }
+
     });
 
-  
+
   }
 
+    async checkPermission() {
+      try {
+        //check or request permission
+        const status = await BarcodeScanner.checkPermission({ force: true });
+        if (status.granted) {
+          //the user granted permission
+          return true;
+        }
+        return false;
+      } catch (e) {
+        console.log(e);
+  
+      }
+    }
+  
+    //BarcodeScanner.startScan({ targetedFormats: [SupportedFormat.QR_CODE] }); // this will now only target QR-codes
+
+
+    async startScan() {
+      try {
+        const permission = await this.checkPermission();
+        if (!permission) {
+          return;
+        }
+        
+        await BarcodeScanner.hideBackground();        
+        document.querySelector('body').classList.add('scanner-active');        
+        this.content_visibility = 'hidden';        
+        const result = await BarcodeScanner.startScan();
+        console.log(result);
+        BarcodeScanner.showBackground();        
+        document.querySelector('body').classList.remove('scanner-active');
+        this.content_visibility = '';
+        if (result?.hasContent) {
+          this.scannedResult = result.content;  
+          console.log(this.scannedResult);
+        }
+      } catch (e) {
+        console.log(e);
+        this.stopScan();
+      }
+    }
+  
+    stopScan() {
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
+      document.querySelector('body').classList.remove('scanner-active');
+      this.content_visibility = '';
+    }
+
+
+  ngOnDestroy(): void {
+    this.stopScan();
+  }
 
 
   //animacionLottie
@@ -54,23 +116,7 @@ export class InicioComponent {
   }
 
 
-  //Despliegue de Camara
-  ircamara() {
-    this.presentAlert("Despliegue de cámara", "")
-  }
 
-  async presentAlert(titulo: string, msg: string) {
-    const alert = await this.alertController.create({
-      header: titulo,
-      message: msg,
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
-
-  
-  
-  
 
   //functionPlayAnimation
   /* play() {

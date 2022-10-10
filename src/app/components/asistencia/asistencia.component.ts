@@ -24,6 +24,7 @@ export class AsistenciaComponent implements OnInit {
     slidesPerView: 1.3,
     centeredSlides: true,
     grabCursor: true,
+    speed: 400,
   }
 
   alumnos = [];

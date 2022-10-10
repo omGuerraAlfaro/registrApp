@@ -1,15 +1,18 @@
-<ion-content class="fondo">
-  <div>
-    <img src="../../../assets/img/user.svg" width="180px" class="logoPerfil">     
-  </div>  
-  <ion-card>
-    <ion-card-header *ngFor="let alumno of alumnos; let i=index">
-      <ion-card-subtitle class="subt">Nombre Alumno:</ion-card-subtitle>
-      <h2 class="title">{{alumno.name}}</h2>
-      <ion-card-subtitle class="subt">Carrera:</ion-card-subtitle>
-      <h2 class="title">{{alumno.carrera}}</h2>
-      <ion-card-subtitle class="subt">Sede:</ion-card-subtitle>
-      <h2 class="title">{{alumno.sede}}</h2>
-    </ion-card-header>
-  </ion-card>
+<ion-content class="background">
+  <ion-cards class="ion-padding">   
+    <ion-card class="cardCenter" *ngFor="let alumno of alumnos; let i = index" >
+      <img src="../../../assets/img/user.svg" />
+      <ion-card-header>
+        <ion-card-subtitle color="dark">Información</ion-card-subtitle>
+        <ion-card-title>{{alumno.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>        
+        <ion-card-subtitle class="title">Carrera: </ion-card-subtitle>        
+        <h5 class="subt" >{{alumno.carrera}}</h5>        
+        <ion-card-subtitle class="title">Sede: </ion-card-subtitle>
+        <h5 class="subt">{{alumno.sede}}</h5>       
+      </ion-card-content>
+    </ion-card>
+
+  </ion-cards>
 </ion-content>
