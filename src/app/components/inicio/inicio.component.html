@@ -1,4 +1,4 @@
-<ion-content class="background">
+<ion-content class="background" [style.visibility]="content_visibility">
   <ion-cards class="ion-padding">
     <ion-card class="ion-text-center cardCenter">
       <div class="titleAnimado">
@@ -22,16 +22,21 @@
         <ion-col size="12">
           <button
             class="buttonLogin"
-            (click)="ircamara()"
+            (click)="startScan()"
             color="primary"
             shape="round">
             <ion-icon name="qr-code-outline"></ion-icon>
           </button>
         </ion-col>
         <ion-col size="12">
-          <span class="textBnt">Registra tu Asistencia!</span>
+          <ion-card-subtitle class="textBnt">Registra tu Asistencia!</ion-card-subtitle>
+          <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por el Docente!</ion-card-subtitle>
+          <ion-item *ngIf="scannedResult">
+            <ion-label class="ion-text-wrap">Resultado: {{scannedResult}}</ion-label>
+          </ion-item>
         </ion-col>
       </ion-row>
     </div>
+    
   </ion-cards>
 </ion-content>
