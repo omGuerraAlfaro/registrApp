@@ -1,4 +1,4 @@
-import { Component,} from '@angular/core';
+import { Component, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -8,36 +8,36 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage {   
+export class HomePage {
 
   user = {
     usuario: "",
     password: ""
   }
 
-  constructor(private router: Router, public alertController: AlertController, private activeroute: ActivatedRoute) {    
-    
+  constructor(private router: Router, public alertController: AlertController, private activeroute: ActivatedRoute) {
+
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
       if (this.router.getCurrentNavigation().extras.state) {
         // Validamos que en la navegacion actual tenga extras       
         this.user = this.router.getCurrentNavigation().extras.state.user;
         // Si tiene extra rescata lo enviado         
-        console.log(this.user) // Muestra por consola lo traido     
+        console.log(this.user) // Muestra por consola lo enviado     
       } else { this.router.navigate(["/home/inicio"]) } // Si no tiene extra la navegacion actual navegar al login    
     });
   }
 
- 
+
   //segment info
-  segmentChanged($event){
-    let direccion=$event.detail.value;
+  segmentChanged($event) {
+    let direccion = $event.detail.value;
     console.log(direccion);
-    this.router.navigate(['home/'+direccion]);
+    this.router.navigate(['home/' + direccion]);
   }
 
 
   irhome() {
-    this.presentAlert2("¿Está Seguro?", "¿Deseas cerrar sesión?")    
+    this.presentAlert2("¿Está Seguro?", "¿Deseas cerrar sesión?")
   }
 
   async presentAlert2(titulo: string, msg: string) {
@@ -48,28 +48,30 @@ export class HomePage {
         [
           {
             text: 'No',
-            role:'cancel',
+            role: 'cancel',
             cssClass: 'alert-button-cancel',
             handler: () => {
-              console.log('Alerta Cancelada');              
+              console.log('Alerta Cancelada');
             },
           },
           {
             text: 'Si',
-            role:'confirm',
+            role: 'confirm',
             cssClass: 'alert-button-confirm',
             handler: (role) => {
-              console.log('confirmacion', role);              
+              console.log('confirmacion', role);
+              localStorage.setItem('ingresado', 'false');
+              localStorage.setItem('usuario', '');
             },
           },
         ],
     });
     await alert.present();
     let result = await alert.onDidDismiss(); //retorna la data del alert
-    console.log(result);    
-    if(result.role=='confirm'){
+    console.log(result);
+    if (result.role == 'confirm') {
       this.router.navigate(['/login']);
-    }    
+    }
   }
 
 }

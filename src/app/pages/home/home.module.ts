@@ -5,10 +5,12 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
+
+
 //Lottie
 import { LottieModule } from 'ngx-lottie';
-import player from 'lottie-web' ;
-export function playerFactory(){
+import player from 'lottie-web';
+export function playerFactory() {
   return player
 }
 //componentes
@@ -19,12 +21,14 @@ import { AsistenciaComponent } from 'src/app/components/asistencia/asistencia.co
 
 @NgModule({
   imports: [
-    LottieModule.forRoot({player:playerFactory}),
+    LottieModule.forRoot({ player: playerFactory }),
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
   ],
-  declarations: [HomePage, PerfilComponent, InicioComponent, AsistenciaComponent]
+  
+  declarations: [HomePage, PerfilComponent, InicioComponent, AsistenciaComponent],
+
 })
-export class HomePageModule {}
+export class HomePageModule { }

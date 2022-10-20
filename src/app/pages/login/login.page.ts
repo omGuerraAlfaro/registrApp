@@ -1,60 +1,114 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { ToastController } from '@ionic/angular';
-import { AnimationController } from '@ionic/angular';
-import { InicioComponent } from 'src/app/components/inicio/inicio.component';
+import {
+  NavController,
+  ToastController,
+  AnimationController,
+} from '@ionic/angular';
+
+//api
+import { AlumnoInterface } from '../../../interfaces/alumnoInterface';
+import { ApiService } from '../../services/apiservice.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   /**
    * Se genera el modelo user con dos claves
    * cada clave tiene su valor inicial
    */
   user = {
-    usuario: "",
-    password: ""
-  }
+    usuario: '',
+    password: '',
+  };
+
   //para guardar el input vacío
-  field: string = ""
+  field: string;
+  //inicio sesion
+  existe: any;
+  alumnos: AlumnoInterface[];
 
-  @ViewChild('logoAnimation', { read: ElementRef, static: true }) logoAnimation: ElementRef;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @ViewChild('logoAnimation', { read: ElementRef, static: true })
+  logoAnimation: ElementRef;
 
-  constructor(private router: Router, public toastController: ToastController, private animationCtrl: AnimationController,) { } // Se debe instanciar
+  constructor(
+    private navCtrl: NavController,
+    private api: ApiService,
+    private router: Router,
+    public toastController: ToastController,
+    private animationCtrl: AnimationController
+  ) { }
+  ionViewWillEnter() {
+    this.api.getAlumnos().subscribe((data) => {
+      console.log(data);
+      this.alumnos = data.alumnos;
+    });
+  }
 
-  
+  ngOnInit() {
+    // TODO document why this method 'ngOnInit' is empty
+  }
+
   ingresar() {
-    if (this.validateModel(this.user)) {
-      // Se declara e instancia un elemento de tipo NavigationExtras
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.user // Al estado se asignamos un objeto con clave y valor
+    //console.log(this.alumnos);
+    if (!this.validateModel(this.user)) {
+      this.presentToast('Falta ingresar ' + this.field, 3000);
+    } else {
+      this.alumnos.forEach((element) => {
+        if
+          (
+          this.user.usuario === element.username &&
+          this.user.password === element.password
+        ) 
+        {
+          console.log('valid');
+          localStorage.setItem('ingresado', 'true');
+          localStorage.setItem('usuario', element.nombre);
+          // Se declara e instancia un elemento de tipo NavigationExtras
+          const navigationExtras: NavigationExtras = {
+            state: {
+              user: this.user, // Al estado se asignamos un objeto con clave y valor
+            },
+          };
+          this.router.navigate(['/home/inicio'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
+          return;
         }
-      }
-      this.router.navigate(['/home/inicio'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
+        if
+          (
+          this.user.usuario != element.username &&
+          this.user.password != element.password
+        ) 
+        {
+          this.presentToast('El usuario y/o contraseña son invalidas', 3000);
+        }
+      });
     }
-    else {
-      this.presentToast("Falta ingresar " + this.field, 3000);
-    }
+
   }
 
-  recuperar() {
-    this.router.navigate(['/resetpassword'])
+  getAlumnos() {
+    this.api.getAlumnos().subscribe((data) => {
+      console.log(data);
+      this.alumnos = data;
+    });
+    return this.alumnos;
   }
+
 
   /**
-   * validateModel sirve para validar que se ingresa algo en los
-   * campos del html mediante su modelo
-   */
+     * validateModel sirve para validar que se ingresa algo en los
+     * campos del html mediante su modelo
+     */
   validateModel(model: any) {
     //recorro todas las entradas que me entrega el Object entries y obtengo
     //su clave-valor
-    for (var [key, value] of Object.entries(model)) {
+    for (const [key, value] of Object.entries(model)) {
       //verifico campo vacío
-      if (value == "") {
+      if (value === '') {
         this.field = key;
         return false;
       }
@@ -62,36 +116,45 @@ export class LoginPage {
     return true;
   }
 
+
+  recuperar() {
+    this.router.navigate(['/resetpassword']);
+  }
+
+
+
   //toast
   async presentToast(msg: string, duracion?: number) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: duracion ? duracion : 2000
+      duration: duracion ? duracion : 2000,
     });
     toast.present();
   }
 
   //animacion logo
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngAfterViewInit() {
-    const logoAnimation = this.animationCtrl.create()
+    const logoAnimation = this.animationCtrl
+      .create()
       .addElement(this.logoAnimation.nativeElement)
       .duration(500)
       .iterations(1)
       .beforeStyles({
-        opacity: 0.2
-      })      
+        opacity: 0.2,
+      })
       .afterClearStyles(['opacity'])
       .keyframes([
         { offset: 0, transform: 'scale(0.5)' },
         { offset: 1, transform: 'scale(1)' },
-        
-      ])
+      ]);
 
-    const animar = this.animationCtrl.create()
+    const animar = this.animationCtrl
+      .create()
       .duration(5000)
       .iterations(Infinity)
       .addAnimation([logoAnimation]);
 
-    animar.play()
+    animar.play();
   }
 }

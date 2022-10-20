@@ -1,18 +1,16 @@
-<ion-content class="background">
-  <ion-cards class="ion-padding">   
-    <ion-card class="cardCenter" *ngFor="let alumno of alumnos; let i = index" >
+<ion-content class="background">  
+    <ion-card class="cardCenter" *ngFor="let alumno of usuario" >
       <img src="../../../assets/img/user.svg" />
       <ion-card-header>
         <ion-card-subtitle color="dark">Información</ion-card-subtitle>
-        <ion-card-title>{{alumno.name}}</ion-card-title>
+        <ion-card-title>{{alumno.usuario}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>        
         <ion-card-subtitle class="title">Carrera: </ion-card-subtitle>        
-        <h5 class="subt" >{{alumno.carrera}}</h5>        
+        <h5 class="subt" >a</h5>        
         <ion-card-subtitle class="title">Sede: </ion-card-subtitle>
-        <h5 class="subt">{{alumno.sede}}</h5>       
+        <h5 class="subt">a</h5>       
       </ion-card-content>
     </ion-card>
 
-  </ion-cards>
 </ion-content>

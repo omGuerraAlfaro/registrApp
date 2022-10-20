@@ -23,7 +23,7 @@ const routes: Routes = [
       {
         path:'asistencia',
         component: AsistenciaComponent
-      },
+      },      
     ]
   }
 ];
