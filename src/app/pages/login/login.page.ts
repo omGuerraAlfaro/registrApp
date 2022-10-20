@@ -70,6 +70,9 @@ export class LoginPage implements OnInit {
           console.log('valid');
           localStorage.setItem('ingresado', 'true');
           localStorage.setItem('usuario', element.nombre);
+          localStorage.setItem('email', element.username + '@duocuc.cl');
+          localStorage.setItem('sede', 'Viña del Mar');
+          localStorage.setItem('carrera', 'Ing Informatica');
           // Se declara e instancia un elemento de tipo NavigationExtras
           const navigationExtras: NavigationExtras = {
             state: {
