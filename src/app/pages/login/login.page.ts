@@ -51,11 +51,13 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     // TODO document why this method 'ngOnInit' is empty
+
   }
 
   ingresar() {
     //console.log(this.alumnos);
     if (!this.validateModel(this.user)) {
+
       this.presentToast('Falta ingresar ' + this.field, 3000);
     } else {
       this.alumnos.forEach((element) => {

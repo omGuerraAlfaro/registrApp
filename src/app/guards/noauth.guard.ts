@@ -11,9 +11,12 @@ export class NoauthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('ingresado')) {
+    if (localStorage.getItem('ingresado')==='false') {
+
+      console.log('No Autorizado');
       return false;
     }else{
+      console.log('Autorizado');
       return true;
     }
      

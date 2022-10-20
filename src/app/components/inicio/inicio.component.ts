@@ -112,6 +112,7 @@ export class InicioComponent {
     let anim1 = animation.animationID;
     if (anim1 == "__lottie_element_1") {
       animation.autoplay = true;
+      animation.loop=1;
     }
   }
 

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilComponent implements OnInit {
 
 
-  usuario:any;
+  usu:any;
   constructor() { }
 
   ngOnInit() {/* 
@@ -16,7 +16,10 @@ export class PerfilComponent implements OnInit {
     this.alumnos = this.alumnoService.getProducts();
     console.log(this.alumnos); */
 
-    this.usuario = localStorage.localStorage.getItem('usuario');
+    this.usu = localStorage.getItem('usuario');
+
+    console.log(this.usu);
+    
   }
 
 }
