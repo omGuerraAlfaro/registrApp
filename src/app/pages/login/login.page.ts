@@ -121,6 +121,10 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/resetpassword']);
   }
 
+  notFound(){
+    
+    this.router.navigate(['/**']);
+  }
 
 
   //toast
