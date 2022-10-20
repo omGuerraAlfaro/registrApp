@@ -3,15 +3,16 @@
     <span class="titulo">Asistencia</span>
   </h2>
 
-  
   <ion-slides [options]="slidesConfig" id="container">
     <ion-slide *ngFor="let id of asignaturas; let i = index">
         <ion-card class="card" class="cardCenter">
-          <ng-lottie
+          <!-- <ng-lottie
             class="lottie"
-            [options]="options2"
+            [options]="options"
             (animationCreated)="created($event)"
-          ></ng-lottie>
+          ></ng-lottie> -->
+
+          <div style="width:1067px;height:600px"  class="lottie" data-animation-path="animation/" data-anim-loop="true" data-name="ninja"></div>
           <ion-card-content>
             <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
             <ion-card-subtitle class="textBnt">{{id.name}}</ion-card-subtitle>

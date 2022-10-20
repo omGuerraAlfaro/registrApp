@@ -11,7 +11,7 @@ export class AsignaturasService {
       name: 'Programación Movil',
       nameProfe: 'Nancy Bernal',
       totalClass: '20',
-      idLottie: 'options',
+      idLottie: 'code',
     },
     {
       id: 1,

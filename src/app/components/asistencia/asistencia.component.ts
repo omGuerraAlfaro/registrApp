@@ -5,10 +5,6 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationController } from '@ionic/angular';
 import { AsignaturasService } from 'src/app/services/asignatura.service';
 
-
-
-
-
 @Component({
   selector: 'app-asistencia',
   templateUrl: './asistencia.component.html',
@@ -29,6 +25,7 @@ export class AsistenciaComponent implements OnInit {
   alumnos = [];
   asignaturas = [];
 
+  
   //lottie
   options: AnimationOptions = {
     path: 'assets/animations/code.json',
@@ -55,7 +52,15 @@ export class AsistenciaComponent implements OnInit {
     private asignaturaService: AsignaturasService,
   ) { }
 
-
+//Capturar Datos de la Animacion (para ser controlados) envio lista a la consola.
+  created(animation: AnimationItem) {
+    console.log(animation);
+    this.animation = animation;
+    const anim1 = animation.animationID;
+    if (anim1 === '__lottie_element_106') {
+      animation.playSpeed = 0.7;
+    }
+  }
 
 
   //services
@@ -66,15 +71,7 @@ export class AsistenciaComponent implements OnInit {
   }
 
 
-  //Capturar Datos de la Animacion (para ser controlados) envio lista a la consola.
-  created(animation: AnimationItem) {
-    console.log(animation);
-    this.animation = animation;
-    const anim1 = animation.animationID;
-    if (anim1 === '__lottie_element_106') {
-      animation.playSpeed = 0.7;
-    }
-  }
+  
 
 
   //animation title asistencia
