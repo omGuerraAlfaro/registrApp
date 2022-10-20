@@ -1,38 +1,82 @@
-.ion-page, #root, body, ion-content.background {
+.ion-page,
+#root,
+body,
+ion-content.background {
   --background: url(../../../assets/img/fondo2.svg) no-repeat fixed;
 }
 
 
+/* 
+@font-face {
+  font-family: "Milky Coffee";
+  src: url("../../../assets/font/MilkyCoffee.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+} */
+
 .contentTitle {
-  margin-top: 20px;
+  margin-top: 50px;
   .titulo {
-    font-size: 45px;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(120deg, #1d1d1f 0%, #1d1d1f98 100%);
-    letter-spacing: -0.014em;
+    font-family: "tahoma";
+    font-size: 100px;
+    // -webkit-background-clip: text;
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // letter-spacing: -0.014em;
+    // -webkit-text-stroke: 1px rgb(255, 255, 255);
   }
 }
 
+.cardCenter {
+  width: 80%; // adjust width on your ion-card suitable on your screen
+  display: block;
+  margin: 2 auto;
+  border-radius: 80px;
+  background: rgba(255, 255, 255, 0);
+  
+}
+
 .subt {
-  margin-bottom: -8px;
+  margin-bottom: -3px;
+  font-family: "tahoma";
+  font-size: 30px;
+  color: white;
 }
 
 .title {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  font-family: Verdana;
+  font-size: 40px;
+  color: white;
 }
 
-.lottie {
-  width: 100px;
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.swiper-slide, .swiper-pagination {
-    bottom: -15px !important;
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
 }
 
-ion-slides {
-   --bullet-background: rgb(114, 113, 113);
-   --bullet-background-active: rgb(60, 20, 207);
-   margin-top: -30px;   
+
+.textBnt {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
 }
+
+.textBnt2 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+
+
+

@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild,  } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationController } from '@ionic/angular';
-import { AlumnoService } from 'src/app/services/alumno.service'; 
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { AsignaturasService } from 'src/app/services/asignatura.service';
+
+
 
 
 
@@ -15,8 +16,6 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 })
 export class AsistenciaComponent implements OnInit {
 
-  private animation: AnimationItem;
-
   slidesConfig = {
     direction: 'horizontal',
     initialSlide: 0,
@@ -25,50 +24,54 @@ export class AsistenciaComponent implements OnInit {
     centeredSlides: true,
     grabCursor: true,
     speed: 400,
-  }
+  };
 
   alumnos = [];
   asignaturas = [];
 
+  //lottie
+  options: AnimationOptions = {
+    path: 'assets/animations/code.json',
+  };
 
+  options2: AnimationOptions = {
+    path: 'assets/animations/maths.json',
+  };
+
+  options3: AnimationOptions = {
+    path: 'assets/animations/english.json',
+  };
+
+  options4: AnimationOptions = {
+    path: 'assets/animations/church.json',
+  };
+  private animation: AnimationItem;
   @ViewChild('anim', { read: ElementRef, static: true }) animar2: ElementRef;
 
-  constructor(private alumnoService: AlumnoService, private asignaturaService: AsignaturasService, private router: Router, private animationCtrl: AnimationController) { }
+
+  constructor(
+    private router: Router,
+    private animationCtrl: AnimationController,
+    private asignaturaService: AsignaturasService,
+  ) { }
+
 
 
 
   //services
-  ngOnInit() {    
+  ngOnInit() {
     //info service asignatura
     this.asignaturas = this.asignaturaService.getProducts();
-    console.log(this.asignaturas);       
+    console.log(this.asignaturas);
   }
 
 
-
-  //lottie
-  options: AnimationOptions = {
-    path: 'assets/animations/code.json',
-  }
-
-  options2: AnimationOptions = {
-    path: 'assets/animations/maths.json',
-  }
-
-  options3: AnimationOptions = {
-    path: 'assets/animations/english.json',
-  }
-
-  options4: AnimationOptions = {
-    path: 'assets/animations/church.json',
-  }
-
-  //Capturar Datos de la Animacion (para ser controlados) envio lista a la consola. 
+  //Capturar Datos de la Animacion (para ser controlados) envio lista a la consola.
   created(animation: AnimationItem) {
     console.log(animation);
     this.animation = animation;
-    let anim1 = animation.animationID;
-    if (anim1 == "__lottie_element_106") {
+    const anim1 = animation.animationID;
+    if (anim1 === '__lottie_element_106') {
       animation.playSpeed = 0.7;
     }
   }

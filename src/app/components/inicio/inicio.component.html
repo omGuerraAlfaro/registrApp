@@ -1,5 +1,6 @@
-<ion-content class="background" [style.visibility]="content_visibility">
-  <ion-cards class="ion-padding">
+<ion-content class="background ion-padding" [style.visibility]="content_visibility">
+ 
+ 
     <ion-card class="ion-text-center cardCenter">
       <div class="titleAnimado">
         <h1 class="titulo text1 ion-text-center" #animar2>
@@ -13,15 +14,11 @@
       ></ng-lottie>
     </ion-card>
 
-    <br>
-    <br>
-    <br>
-    
     <div class="ion-text-center">
       <ion-row>
         <ion-col size="12">
           <button
-            class="buttonLogin"
+            class="buttonQr"
             (click)="startScan()"
             color="primary"
             shape="round">
@@ -29,14 +26,14 @@
           </button>
         </ion-col>
         <ion-col size="12">
-          <ion-card-subtitle class="textBnt">Registra tu Asistencia!</ion-card-subtitle>
-          <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por el Docente!</ion-card-subtitle>
+          <ion-card-subtitle class="textBnt">Registra tu asistencia!</ion-card-subtitle>
+          <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por tu Docente!</ion-card-subtitle>
           <ion-item *ngIf="scannedResult">
             <ion-label class="ion-text-wrap">Resultado: {{scannedResult}}</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
-    </div>
+    </div>  
     
-  </ion-cards>
+ 
 </ion-content>

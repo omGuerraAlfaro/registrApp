@@ -1,0 +1,14 @@
+.splash {
+    --background: #00316D;
+    .flex-center{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      img{
+        max-width: 250px;
+        margin-bottom: 25%;
+      }
+    }
+}

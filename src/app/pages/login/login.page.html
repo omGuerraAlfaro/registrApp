@@ -1,44 +1,63 @@
-<ion-content [fullscreen]="true" class="background">  
+<ion-content [fullscreen]="true" class="background">
   <div class="logo" class="ion-text-center">
-    <img class="svgIgm" #logoAnimation mat-card-sm-image src="../../../assets/img/logo1.png" />
+    <img
+      class="svgIgm"
+      #logoAnimation
+      mat-card-sm-image
+      src="../../../assets/img/logo1.png"
+    />
   </div>
   <h1 class="titulo"><b>¡Bienvenido!</b></h1>
   <ion-card class="cardFondo">
     <ion-card-content>
-      <!-- User -->
-      <ion-item lines="none">             
+
+      <ion-item lines="none">
         <ion-input
-          placeholder="Ingresa tu correo aquí"
+          placeholder="Ingresa tu usuario aquí"
           type="text"
           [(ngModel)]="user.usuario"
-          minlength="3"
-          maxlength="8"
         ></ion-input>
-      </ion-item>
-      <br>
-      <!-- Password -->
-      <ion-item lines="none">        
+      </ion-item>      
+
+      <ion-item lines="none">
         <ion-input
           placeholder="Ingresa tu contraseña aquí"
           type="password"
           [(ngModel)]="user.password"
-          minlength="4"
-          maxlength="4"
+          minlength="6"
+          maxlength="6"
         ></ion-input>
-      </ion-item>
-      <br>
-      <!-- buttons -->
+      </ion-item>    
+
       <ion-row>
         <ion-col>
-          <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
-          <ion-button class="buttonLogin" (click)="ingresar()" expand="full" color="dark" shape="round" >Ingresar</ion-button>
+          <ion-button
+            class="buttonLogin"
+            (click)="ingresar()"
+            expand="full"
+            color="dark"
+            shape="round"
+            >Iniciar Sesión</ion-button
+          >
         </ion-col>
         <ion-col>
-          <!-- Indicamos mediante el (click) la funcion a quien referenciará-->
-          <ion-button class="buttonLogin" (click)="recuperar()" color="dark" expand="full" shape="round" >Recuperar Contraseña</ion-button>
+          <ion-button
+            class="buttonLogin"
+            (click)="recuperar()"
+            color="dark"
+            expand="full"
+            shape="round"
+            >Recuperar Contraseña</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-card-content>
-  </ion-card>  
+  </ion-card>
 </ion-content>
-<ion-footer [traslucent]="false"></ion-footer>
+
+<!-- 
+
+
+ 
+
+-->
