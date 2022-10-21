@@ -1,5 +1,5 @@
-<ion-content class="background">  
-    <ion-card class="cardCenter" >
+<ion-content class="background" >  
+    <ion-card class="cardCenter" id="container">
       <img src="../../../assets/img/user.svg" />
       <ion-card-header>
         <ion-card-subtitle color="dark">Información</ion-card-subtitle>
@@ -7,9 +7,11 @@
       </ion-card-header>
       <ion-card-content>        
         <ion-card-subtitle class="title">Carrera: </ion-card-subtitle>        
-        <h5 class="subt" >a</h5>        
+        <h5 class="subt" >{{carrera}}</h5>        
         <ion-card-subtitle class="title">Sede: </ion-card-subtitle>
-        <h5 class="subt">a</h5>       
+        <h5 class="subt">{{sede}}</h5> 
+        <ion-card-subtitle class="title">Correo: </ion-card-subtitle>
+        <h5 class="subt">{{email}}</h5>      
       </ion-card-content>
     </ion-card>
 
