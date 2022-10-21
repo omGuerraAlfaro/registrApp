@@ -1,8 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AnimationItem } from 'lottie-web';
-import { AnimationOptions } from 'ngx-lottie';
 
 //capacitor
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner'
@@ -14,8 +12,6 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner'
   styleUrls: ['./inicio.component.scss'],
 })
 export class InicioComponent {
-
-  private animation: AnimationItem;
 
   user = {
     usuario: "",
@@ -67,8 +63,7 @@ export class InicioComponent {
         const permission = await this.checkPermission();
         if (!permission) {
           return;
-        }
-        
+        }        
         await BarcodeScanner.hideBackground();        
         document.querySelector('body').classList.add('scanner-active');        
         this.content_visibility = 'hidden';        
@@ -100,21 +95,7 @@ export class InicioComponent {
   }
 
 
-  //animacionLottie
-  options: AnimationOptions = {
-    path: 'assets/animations/3.json',
-  }
 
-  //Capturar Datos de la Animacion (para ser controlados) envio lista a la consola. 
-  created(animation: AnimationItem) {
-    console.log(animation);
-    this.animation = animation;
-    let anim1 = animation.animationID;
-    if (anim1 == "__lottie_element_1") {
-      animation.autoplay = true;
-      animation.loop=1;
-    }
-  }
 
 
 

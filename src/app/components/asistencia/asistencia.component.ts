@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnimationItem } from 'lottie-web';
-import { AnimationOptions } from 'ngx-lottie';
 import { AnimationController } from '@ionic/angular';
 import { AsignaturasService } from 'src/app/services/asignatura.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+
 
 @Component({
   selector: 'app-asistencia',
@@ -25,54 +25,38 @@ export class AsistenciaComponent implements OnInit {
   alumnos = [];
   asignaturas = [];
 
-  
-  //lottie
-  options: AnimationOptions = {
-    path: 'assets/animations/code.json',
-  };
-
-  options2: AnimationOptions = {
-    path: 'assets/animations/maths.json',
-  };
-
-  options3: AnimationOptions = {
-    path: 'assets/animations/english.json',
-  };
-
-  options4: AnimationOptions = {
-    path: 'assets/animations/church.json',
-  };
-  private animation: AnimationItem;
   @ViewChild('anim', { read: ElementRef, static: true }) animar2: ElementRef;
 
+
+  arrayAsignaturas: any = [{
+    id: "",
+    data: {} as AsignaturasService
+  }];
 
   constructor(
     private router: Router,
     private animationCtrl: AnimationController,
     private asignaturaService: AsignaturasService,
-  ) { }
-
-//Capturar Datos de la Animacion (para ser controlados) envio lista a la consola.
-  created(animation: AnimationItem) {
-    console.log(animation);
-    this.animation = animation;
-    const anim1 = animation.animationID;
-    if (anim1 === '__lottie_element_106') {
-      animation.playSpeed = 0.7;
-    }
+    private firestore: FirestoreService,
+  ) {
+    this.getAsignaturas();
   }
-
 
   //services
   ngOnInit() {
-    //info service asignatura
-    this.asignaturas = this.asignaturaService.getProducts();
-    console.log(this.asignaturas);
   }
 
-
-  
-
+  getAsignaturas() {
+    this.firestore.getColletcion().subscribe((resultadoConsultaTareas) => {
+      this.arrayAsignaturas = [];
+      resultadoConsultaTareas.forEach((datosTarea: any) => {
+        this.arrayAsignaturas.push({
+          id: datosTarea.payload.doc.id,
+          data: datosTarea.payload.doc.data()
+        });
+      })
+    });
+  }
 
   //animation title asistencia
   ngAfterViewInit() {

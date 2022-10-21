@@ -4,25 +4,28 @@
   </h2>
 
   <ion-slides [options]="slidesConfig" id="container">
-    <ion-slide *ngFor="let id of asignaturas; let i = index">
-        <ion-card class="card" class="cardCenter">
-          <!-- <ng-lottie
+    <ion-slide *ngFor="let data of arrayAsignaturas">
+      <ion-card class="card" class="cardCenter">
+        <!-- <ng-lottie
             class="lottie"
             [options]="options"
             (animationCreated)="created($event)"
           ></ng-lottie> -->
 
-          <div style="width:1067px;height:600px"  class="lottie" data-animation-path="animation/" data-anim-loop="true" data-name="ninja"></div>
-          <ion-card-content>
-            <ion-card-subtitle class="subt">Asignatura:</ion-card-subtitle>
-            <ion-card-subtitle class="textBnt">{{id.name}}</ion-card-subtitle>
-            <ion-card-subtitle class="subt">Profesor/a: </ion-card-subtitle>
-            <ion-card-subtitle class="textBnt">{{id.nameProfe}}</ion-card-subtitle>
-            <ion-card-subtitle class="textBnt2">
-              80% (10 de {{ id.totalClass }} clases)
-            </ion-card-subtitle>
-          </ion-card-content>
-        </ion-card>
+        <lottie-player
+          src="../../../assets/animations/{{data.data.idLottie}}.json"
+          background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+        </lottie-player>
+        <ion-card-content>
+          <ion-card-subtitle class="textBnt">Asignatura:</ion-card-subtitle>
+          <ion-card-subtitle class="subt">{{data.data.name}}</ion-card-subtitle>
+          <ion-card-subtitle class="textBnt">Profesor/a: </ion-card-subtitle>
+          <ion-card-subtitle class="subt">{{data.data.nameProfe}}</ion-card-subtitle>
+          <ion-card-subtitle class="textBnt2">
+            80% (10 de {{ data.data.totalClass }} clases)
+          </ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
       <br>
     </ion-slide>
   </ion-slides>
