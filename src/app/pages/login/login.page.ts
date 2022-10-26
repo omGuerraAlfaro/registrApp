@@ -36,7 +36,6 @@ export class LoginPage implements OnInit {
   logoAnimation: ElementRef;
 
   constructor(
-    private navCtrl: NavController,
     private api: ApiService,
     private router: Router,
     public toastController: ToastController,
