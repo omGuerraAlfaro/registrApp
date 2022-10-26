@@ -2,6 +2,7 @@ import { Component, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +16,10 @@ export class HomePage {
     password: ""
   }
 
-  constructor(private router: Router, public alertController: AlertController, private activeroute: ActivatedRoute) {
 
+  //transparent_content = 'show';
+
+  constructor(private router: Router, public alertController: AlertController, private activeroute: ActivatedRoute) {
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
       if (this.router.getCurrentNavigation().extras.state) {
         // Validamos que en la navegacion actual tenga extras       
@@ -26,6 +29,17 @@ export class HomePage {
       } else { this.router.navigate(["/home/inicio"]) } // Si no tiene extra la navegacion actual navegar al login    
     });
   }
+
+
+  
+  //obtenerVisibilidadComponentInicio(qr)
+  // async obtenerVisitility() {
+  //   if (this.content.content_visibility != '') {
+  //     this.transparent_content = 'show';
+  //   } else {
+  //     this.transparent_content = 'hidden';
+  //   }
+  // }
 
 
   //segment info
