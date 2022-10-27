@@ -7,7 +7,7 @@ import { NoingresadoGuard } from './guards/noingresado.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
@@ -25,9 +25,14 @@ const routes: Routes = [
     canActivate:[IngresadoGuard]
   },
   {
+    path: 'splash',
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
 ];
 
 @NgModule({

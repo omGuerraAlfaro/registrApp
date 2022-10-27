@@ -27,6 +27,11 @@
 
 
 body.scanner-active {
-    --background: transparent;
-    --ion-background-color: transparent;
-  }
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+.swiper-pagination {
+  position: relative;
+  padding-top: 10px;
+}

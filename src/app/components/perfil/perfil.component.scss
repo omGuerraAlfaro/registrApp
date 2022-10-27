@@ -37,9 +37,14 @@ ion-content {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-  }
-  
-  #container strong {
+}
+
+#container strong {
     font-size: 20px;
     line-height: 26px;
-  }
+}
+
+
+.mayusculas{
+    text-transform: capitalize;
+}
