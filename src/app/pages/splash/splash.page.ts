@@ -10,7 +10,12 @@ export class SplashPage implements OnInit {
 
   constructor(public router:Router) { 
     setTimeout(()=>{
-      this.router.navigateByUrl('login');
+      if(localStorage.getItem('ingresado')&&(localStorage.getItem('usuario'))){
+        this.router.navigate(['/home/inicio']);
+      }else{
+        localStorage.setItem('ingresado', 'false')
+        this.router.navigate(['/login']);
+      }      
     },2000);
   }
 
