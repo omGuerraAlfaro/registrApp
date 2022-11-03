@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
-import { AuthGuard } from './guards/auth.guard';
-import { NoauthGuard} from './guards/noauth.guard';
+import { IngresadoGuard } from './guards/ingresado.guard';
+import { NoingresadoGuard } from './guards/noingresado.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    // canActivate:[AuthGuard]
+    canActivate:[NoingresadoGuard]
+
   },  
   {
     path: 'resetpassword',
@@ -22,12 +23,17 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    // canActivate:[NoauthGuard]
+    canActivate:[IngresadoGuard]
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule),
   },
   {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
 ];
 
 @NgModule({

@@ -10,17 +10,17 @@
 </ion-header>
 
 <ion-content class="background">
-  <ion-cards id="container" >
-    <ion-card class="ion-text-center cardCenter">
+  <div id="container" >
+    <ion-card class="ion-text-center cardCenter" id="container">
       <div class="titleAnimado">
         <h1 class="titulo text1 ion-text-center" #animar2>
           <b>Oops!</b>
         </h1>
       </div>
-      <ng-lottie
-        [options]="options"
-        (animationCreated)="created($event)"
-      ></ng-lottie>
+      <lottie-player
+          src="../../../assets/animations/404.json"
+          background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+        </lottie-player>
     </ion-card>
-  </ion-cards>
+  </div>
 </ion-content>

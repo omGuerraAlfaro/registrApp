@@ -4,6 +4,7 @@ import {
   NavController,
   ToastController,
   AnimationController,
+  LoadingController,
 } from '@ionic/angular';
 
 //api
@@ -36,11 +37,11 @@ export class LoginPage implements OnInit {
   logoAnimation: ElementRef;
 
   constructor(
-    private navCtrl: NavController,
     private api: ApiService,
     private router: Router,
     public toastController: ToastController,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,    
+    public loadingController: LoadingController,
   ) { }
   ionViewWillEnter() {
     this.api.getAlumnos().subscribe((data) => {
@@ -69,8 +70,9 @@ export class LoginPage implements OnInit {
         {
           console.log('valid');
           localStorage.setItem('ingresado', 'true');
-          localStorage.setItem('usuario', element.nombre);
-          localStorage.setItem('email', element.username + '@duocuc.cl');
+          localStorage.setItem('usuario', element.nombre.toLowerCase());
+          localStorage.setItem('email', element.username + '@duocuc.cl');          
+          localStorage.setItem('username', element.username);
           localStorage.setItem('sede', 'Viña del Mar');
           localStorage.setItem('carrera', 'Ing Informatica');
           // Se declara e instancia un elemento de tipo NavigationExtras
@@ -126,8 +128,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/resetpassword']);
   }
 
-  notFound(){
-    
+  notFound(){    
     this.router.navigate(['/**']);
   }
 
@@ -147,20 +148,20 @@ export class LoginPage implements OnInit {
     const logoAnimation = this.animationCtrl
       .create()
       .addElement(this.logoAnimation.nativeElement)
-      .duration(500)
+      .duration(1500)
       .iterations(1)
       .beforeStyles({
         opacity: 0.2,
       })
       .afterClearStyles(['opacity'])
       .keyframes([
-        { offset: 0, transform: 'scale(0.5)' },
+        { offset: 0, transform: 'scale(0.1)' },
         { offset: 1, transform: 'scale(1)' },
       ]);
 
     const animar = this.animationCtrl
       .create()
-      .duration(5000)
+      .duration(6000)
       .iterations(Infinity)
       .addAnimation([logoAnimation]);
 

@@ -34,11 +34,10 @@ export class AsistenciaComponent implements OnInit {
   }];
 
   constructor(
-    private router: Router,
     private animationCtrl: AnimationController,
-    private asignaturaService: AsignaturasService,
     private firestore: FirestoreService,
   ) {
+
     this.getAsignaturas();
   }
 
@@ -76,4 +75,7 @@ export class AsistenciaComponent implements OnInit {
   }
 
 
+ 
 }
+
+
