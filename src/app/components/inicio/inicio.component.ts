@@ -32,23 +32,21 @@ export class InicioComponent {
     useLocale: true,
     maxResults: 5,
   }
-  geoAddress:any;
+  geoAddress: any;
 
   constructor(
     private nativegeocoder: NativeGeocoder,
-    public alertController: AlertController,
-    private router: Router,
-    private activeroute: ActivatedRoute,) {
-    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
-      if (this.router.getCurrentNavigation().extras.state) {
-        // Validamos que en la navegacion actual tenga extras       
-        this.user = this.router.getCurrentNavigation().extras.state.user;
-        // Si tiene extra rescata lo enviado         
-        console.log(this.user) // Muestra por consola lo traido     
-      } else {
-        this.user.usuario = localStorage.getItem('username')
-      }
-    });
+    public alertController: AlertController,) {
+    this.user.usuario = localStorage.getItem('username')
+    // this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
+    //   if (this.router.getCurrentNavigation().extras.state) {
+    //     // Validamos que en la navegacion actual tenga extras       
+    //     this.user = this.router.getCurrentNavigation().extras.state.user;
+    //     // Si tiene extra rescata lo enviado         
+    //     console.log(this.user) // Muestra por consola lo traido     
+    //   } 
+
+    // });
 
   }
 
@@ -119,7 +117,7 @@ export class InicioComponent {
 
     //   this.geoAddress = this.generateAddress(result[0]);
     //   console.log('location address = ', this.geoAddress);
-      
+
     // })
   }
 
