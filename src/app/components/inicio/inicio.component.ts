@@ -111,17 +111,23 @@ export class InicioComponent {
     const location = await Geolocation.getCurrentPosition();
     console.log('location = ', location);
 
-    this.distance.calcularDistancia();
-    // this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
-    //   result: NativeGeocoderResult[]) => {
-    //   console.log('result =', result);
-    //   //console.log('result =', result[0]);
-
-    //   this.geoAddress = this.generateAddress(result[0]);
-    //   console.log('location address = ', this.geoAddress);
-
-    // })
+    this.distance.calcularDistancia(location.coords.latitude, location.coords.longitude);
+    setTimeout(() => {
+      this.geoAddress = this.distance.getDistance();
+    }, 2500);
   }
+
+  // this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
+  //   result: NativeGeocoderResult[]) => {
+  //   console.log('result =', result);
+  //   //console.log('result =', result[0]);
+
+  //   this.geoAddress = this.generateAddress(result[0]);
+  //   console.log('location address = ', this.geoAddress);
+
+  // })
+
+
 
   /* 
   https://api.mapbox.com/geocoding/v5/mapbox.places/-71.53436502002985,-33.033741250860906.json?limit=1&access_token=pk.eyJ1Ijoib21hcnJycmlnbmFjaW8iLCJhIjoiY2xhMXc0N2Y4MGJreTNubXFkOGVlNm9mbCJ9.hqyIoIBnc3zOhe57Nerqyg
@@ -163,7 +169,7 @@ export class InicioComponent {
 
 
 
-  
+
 
   //functionPlayAnimation
   /* play() {
