@@ -32,7 +32,7 @@ export class DistanceService {
 
 
   getDistance(){
-    return this.respuestaGeoDistance;
+    return Math.round(this.respuestaGeoDistance);
   }
 
 

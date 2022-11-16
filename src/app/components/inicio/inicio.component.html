@@ -11,7 +11,7 @@
   </ion-card>
 
   <div class="ion-text-center">
-    <ion-row>
+    <ion-row> 
       <ion-col size="12">
         <button class="buttonQr" (click)="startScan()" color="primary" shape="round">
           <ion-icon name="qr-code-outline"></ion-icon>
@@ -20,8 +20,8 @@
       <ion-col size="12">
         <ion-card-subtitle class="textBnt">Registra tu asistencia!</ion-card-subtitle>
         <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por tu Docente!</ion-card-subtitle>
-        <ion-item *ngIf="scannedResult">
-          <ion-label class="ion-text-wrap">Resultado: {{scannedResult}}</ion-label>
+        <ion-item *ngIf="resultJSON">
+          <ion-label class="ion-text-wrap">Resultado: {{resultJSON}}</ion-label>
         </ion-item>
         <br>
         <ion-item>

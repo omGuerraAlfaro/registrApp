@@ -1,0 +1,50 @@
+<ion-content class="background">
+
+  <ion-card class="cardFondo">
+    <ion-card-content>
+      <h1 class="titulo"><b>Ingresa los datos solicitados para generar QR</b></h1>
+      <!-- 1 -->
+      <ion-item lines="none">
+        <ion-input placeholder="Ingresa ID de Asignatura aquí" type="text" [(ngModel)]="infoQR.id"></ion-input>
+      </ion-item>
+      <!-- 2 -->
+      <ion-item lines="none">
+        <ion-input placeholder="Ingresa SECCIÓN aquí" type="text" [(ngModel)]="infoQR.seccion"></ion-input>
+      </ion-item>
+      <!-- 3 -->
+      <ion-item lines="none">
+        <ion-input placeholder="Ingresa ASIGNATURA aquí" type="text" [(ngModel)]="infoQR.asignatura"></ion-input>
+      </ion-item>
+      <!-- 4 -->
+      <ion-item lines="none">
+        <ion-input placeholder="Ingresa NOMBRE DOCENTE aquí" type="text" [(ngModel)]="infoQR.docente"></ion-input>
+      </ion-item>
+      <!-- 5 -->
+      <ion-item lines="none">
+        <ion-input placeholder="Ingresa CORREO aquí" type="text" [(ngModel)]="infoQR.correo"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button class="buttonLogin" (click)="generarQR()" expand="full" color="dark" shape="round">Generar QR
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <div class="ion-text-center" *ngIf="myAngularxQrCode">
+      <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+  </ion-card>
+  
+  <!-- <ion-item lines="none">
+    <ion-input
+      placeholder="Ingresa tu contraseña aquí"
+      type="password"
+      inputmode="numeric"
+      [(ngModel)]="user.password"
+      minlength="6"
+      maxlength="6"
+    ></ion-input>
+  </ion-item>    -->
+  
+ 
+</ion-content>

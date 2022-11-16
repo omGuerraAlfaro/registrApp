@@ -33,13 +33,17 @@ export class InicioComponent {
     useLocale: true,
     maxResults: 5,
   }
+
   geoAddress: any;
+  resultJSON:any; 
 
   constructor(
     private nativegeocoder: NativeGeocoder,
     public alertController: AlertController,
     public distance: DistanceService) {
     this.user.usuario = localStorage.getItem('username')
+
+
     // this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
     //   if (this.router.getCurrentNavigation().extras.state) {
     //     // Validamos que en la navegacion actual tenga extras       
@@ -68,6 +72,10 @@ export class InicioComponent {
 
   //BarcodeScanner.startScan({ targetedFormats: [SupportedFormat.QR_CODE] }); // this will now only target QR-codes
 
+  /* //obtengo el resultado del qr
+      const result = await JSON.parse((await BarcodeScanner.startScan()).format);      
+      console.log(result);
+       */
 
   async startScan() {
     try {
@@ -86,9 +94,10 @@ export class InicioComponent {
       if (result?.hasContent) {
         this.scannedResult = result.content;
         console.log(this.scannedResult);
+        this.resultJSON = JSON.parse(this.scannedResult);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
       this.stopScan();
     }
   }
@@ -117,6 +126,7 @@ export class InicioComponent {
     }, 2500);
   }
 
+  // async fetchLocation() {
   // this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
   //   result: NativeGeocoderResult[]) => {
   //   console.log('result =', result);
@@ -124,46 +134,38 @@ export class InicioComponent {
 
   //   this.geoAddress = this.generateAddress(result[0]);
   //   console.log('location address = ', this.geoAddress);
-
-  // })
-
-
-
-  /* 
-  https://api.mapbox.com/geocoding/v5/mapbox.places/-71.53436502002985,-33.033741250860906.json?limit=1&access_token=pk.eyJ1Ijoib21hcnJycmlnbmFjaW8iLCJhIjoiY2xhMXc0N2Y4MGJreTNubXFkOGVlNm9mbCJ9.hqyIoIBnc3zOhe57Nerqyg
-  */
-
-
+  //   });
+  // }
 
   //Return Comina saperated auuress
-  generateAddress(addressObj) {
-    let obj = [];
-    let uniqueNames = [];
-    let address = "";
+  // generateAddress(addressObj) {
+  //   let obj = [];
+  //   let uniqueNames = [];
+  //   let address = "";
 
-    for (let key in addressObj) {
-      if (key != 'areasOfInterest') {
-        obj.push(addressObj[key]);
-      }
-    }
+  //   for (let key in addressObj) {
+  //     if (key != 'areasOfInterest') {
+  //       obj.push(addressObj[key]);
+  //     }
+  //   }
 
-    var i = 0;
-    obj.forEach(value => {
-      if (uniqueNames.indexOf(obj[i]) === -1) {
-        uniqueNames.push(obj[i]);
-      }
-      i++;
-    });
+  //   var i = 0;
+  //   obj.forEach(value => {
+  //     if (uniqueNames.indexOf(obj[i]) === -1) {
+  //       uniqueNames.push(obj[i]);
+  //     }
+  //     i++;
+  //   });
 
 
-    uniqueNames.reverse();
-    for (let val in uniqueNames) {
-      if (uniqueNames[val].length)
-        address += uniqueNames[val] + ', ';
-    }
+  //   uniqueNames.reverse();
+  //   for (let val in uniqueNames) {
+  //     if (uniqueNames[val].length)
+  //       address += uniqueNames[val] + ', ';
+  //   }
 
-    return address.slice(0, -2);
-  }
+  //   return address.slice(0, -2);
+  // }
 
 
 
