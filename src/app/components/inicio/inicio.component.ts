@@ -7,6 +7,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner'
 import { Geolocation } from '@capacitor/geolocation';
 //geo
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { DistanceService } from 'src/app/services/distance.service';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class InicioComponent {
 
   constructor(
     private nativegeocoder: NativeGeocoder,
-    public alertController: AlertController,) {
+    public alertController: AlertController,
+    public distance: DistanceService) {
     this.user.usuario = localStorage.getItem('username')
     // this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
     //   if (this.router.getCurrentNavigation().extras.state) {
@@ -109,7 +111,7 @@ export class InicioComponent {
     const location = await Geolocation.getCurrentPosition();
     console.log('location = ', location);
 
-
+    this.distance.calcularDistancia();
     // this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
     //   result: NativeGeocoderResult[]) => {
     //   console.log('result =', result);
@@ -124,6 +126,7 @@ export class InicioComponent {
   /* 
   https://api.mapbox.com/geocoding/v5/mapbox.places/-71.53436502002985,-33.033741250860906.json?limit=1&access_token=pk.eyJ1Ijoib21hcnJycmlnbmFjaW8iLCJhIjoiY2xhMXc0N2Y4MGJreTNubXFkOGVlNm9mbCJ9.hqyIoIBnc3zOhe57Nerqyg
   */
+
 
 
   //Return Comina saperated auuress
@@ -156,6 +159,11 @@ export class InicioComponent {
     return address.slice(0, -2);
   }
 
+
+
+
+
+  
 
   //functionPlayAnimation
   /* play() {
