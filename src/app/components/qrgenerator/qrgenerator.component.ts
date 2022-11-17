@@ -18,8 +18,6 @@ export class QrgeneratorComponent implements OnInit {
   }
 
   constructor() {
-
-
   }
 
   ngOnInit() { }

@@ -9,6 +9,10 @@ import { Geolocation } from '@capacitor/geolocation';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { DistanceService } from 'src/app/services/distance.service';
 
+//fireStore
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { AsignaturasService } from 'src/app/services/asignatura.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +21,11 @@ import { DistanceService } from 'src/app/services/distance.service';
 })
 export class InicioComponent {
   coordinates: any;
+
+  Asignatura: any = [{
+    id: "",
+    data: {} as AsignaturasService
+  }];
 
   user = {
     usuario: "",
@@ -35,12 +44,13 @@ export class InicioComponent {
   }
 
   geoAddress: any;
-  resultJSON:any; 
+  resultJSON: any;
 
   constructor(
     private nativegeocoder: NativeGeocoder,
     public alertController: AlertController,
-    public distance: DistanceService) {
+    public distance: DistanceService,
+    public firebaseService: FirestoreService) {
     this.user.usuario = localStorage.getItem('username')
 
 
@@ -55,6 +65,15 @@ export class InicioComponent {
     // });
 
   }
+
+  //Busca asignatura, en colección asignatura
+  // getAsignatura() {
+  //   const path = "asignatura"
+  //   this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', 'PGY4121').subscribe(res => {
+  //     console.log(res);
+  //   });
+  // }
+
 
   async checkPermission() {
     try {
@@ -72,10 +91,7 @@ export class InicioComponent {
 
   //BarcodeScanner.startScan({ targetedFormats: [SupportedFormat.QR_CODE] }); // this will now only target QR-codes
 
-  /* //obtengo el resultado del qr
-      const result = await JSON.parse((await BarcodeScanner.startScan()).format);      
-      console.log(result);
-       */
+
 
   async startScan() {
     try {
@@ -92,9 +108,21 @@ export class InicioComponent {
       document.querySelector('body').classList.remove('scanner-active');
       this.content_visibility = '';
       if (result?.hasContent) {
+        const path = "asignatura"
         this.scannedResult = result.content;
         console.log(this.scannedResult);
+        //parse resultado a JSON
         this.resultJSON = JSON.parse(this.scannedResult);
+        console.log(this.resultJSON.asignatura);
+        const valAsignatura = this.resultJSON.asignatura;
+        const valSeccion = this.resultJSON.seccion;
+        //Busqueda en fireStore        
+        this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valAsignatura).subscribe(res => {
+          console.log(res);
+        });
+        this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valSeccion).subscribe(res2 => {
+          console.log(res2);
+        });
       }
     } catch (e) {
       console.error(e);
@@ -113,8 +141,6 @@ export class InicioComponent {
   ngOnDestroy(): void {
     this.stopScan();
   }
-
-
 
   async fetchLocation() {
     const location = await Geolocation.getCurrentPosition();

@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AsignaturasService {
-    id: number;
-    name: string;
-    nameProfe: string;
-    totalClass: number;
-    idLottie: string;
+  id: number;
+  name: string;
+  nameProfe: string;
+  totalClass: number;
+  idLottie: string;
 
   constructor() { }
 

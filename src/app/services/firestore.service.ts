@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -7,13 +7,20 @@ import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/compat/
 })
 export class FirestoreService {
 
-  constructor(private firestore:AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
 
-  createDoc(){
+  createDoc() {
     this.firestore.collection('asignatura')
   }
-  getColletcion(){
-      return this.firestore.collection('asignatura').snapshotChanges()
-    }
+  getColletcion() {
+    return this.firestore.collection('asignatura').snapshotChanges()
+  }
+
+
+  getCollectionParams<tipo>(path: string, params: string, value: string) {
+    const dataCollection: AngularFirestoreCollection<tipo> = this.firestore.collection<tipo>(path
+      , ref => ref.where(params, '==', value));
+    return dataCollection.valueChanges();
+  }
 }
