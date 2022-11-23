@@ -33,12 +33,19 @@ export class AsistenciaComponent implements OnInit {
     data: {} as AsignaturasService
   }];
 
+  arrayClases: any = [{
+    id: '',
+    data: {},
+  }];
+
   constructor(
     private animationCtrl: AnimationController,
     private firestore: FirestoreService,
   ) {
 
     this.getAsignaturas();
+    this.getClases();
+
   }
 
   //services
@@ -57,7 +64,23 @@ export class AsistenciaComponent implements OnInit {
     });
   }
 
+  getClases() {
+    this.firestore.getCollection2().subscribe((resultadoConsultaTareas) => {
+      console.log(resultadoConsultaTareas[0]);
+      this.arrayClases = [];
+      resultadoConsultaTareas.forEach((datosTarea: any) => {
+        this.arrayClases.push({
+          id: datosTarea.payload.doc.id,
+          data: datosTarea.payload.doc.data()
+        });
+      })
+      console.log(this.arrayClases);
+    });
+  }
+
   //animation title asistencia
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+
   ngAfterViewInit() {
     const animarTitle = this.animationCtrl.create()
       .addElement(this.animar2.nativeElement)
@@ -75,7 +98,7 @@ export class AsistenciaComponent implements OnInit {
   }
 
 
- 
+
 }
 
 

@@ -12,6 +12,7 @@ import { DistanceService } from 'src/app/services/distance.service';
 //fireStore
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AsignaturasService } from 'src/app/services/asignatura.service';
+import { SendemailService } from 'src/app/services/sendemail.service';
 
 
 @Component({
@@ -51,7 +52,7 @@ export class InicioComponent {
     public alertController: AlertController,
     public distance: DistanceService,
     public firebaseService: FirestoreService) {
-    this.user.usuario = localStorage.getItem('username')
+    //this.user.usuario = localStorage.getItem('username')
 
 
     // this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
@@ -110,26 +111,42 @@ export class InicioComponent {
       if (result?.hasContent) {
         const path = "asignatura"
         this.scannedResult = result.content;
-        console.log(this.scannedResult);
+        console.log(this.scannedResult + " resultado barCode");
         //parse resultado a JSON
         this.resultJSON = JSON.parse(this.scannedResult);
-        console.log(this.resultJSON.asignatura);
-        const valAsignatura = this.resultJSON.asignatura;
-        const valSeccion = this.resultJSON.seccion;
-        //Busqueda en fireStore        
-        this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valAsignatura).subscribe(res => {
-          console.log(res);
-        });
-        this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valSeccion).subscribe(res2 => {
-          console.log(res2);
-        });
+        console.log(this.resultJSON);
+        const { idAsignatura, asignatura, seccion, nombreProfesor, correoProfesor } = this.resultJSON as Record<string, unknown>;
+        const idlottie = 'code';
+        this.firebaseService.insertColectionAsignatura({
+          code: idAsignatura,
+          idlottie,
+          seccion:[seccion],
+          totalclases:'10',
+
+        });        
       }
     } catch (e) {
       console.error(e);
       this.stopScan();
     }
   }
-
+  //Busqueda en fireStore        
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valId).subscribe(res => {
+  //   console.log(res);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'seccion', valSeccion).subscribe(res2 => {
+  //   console.log(res2);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreAsignatura', valAsignatura).subscribe(res3 => {
+  //   console.log(res3);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreDocente', valDocente).subscribe(res4 => {
+  //   console.log(res4);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'correoDocente', valCorreo).subscribe(res5 => {
+  //   console.log(res5);
+  // });
+  
   stopScan() {
     BarcodeScanner.showBackground();
     BarcodeScanner.stopScan();
@@ -143,7 +160,9 @@ export class InicioComponent {
   }
 
   async fetchLocation() {
-    const location = await Geolocation.getCurrentPosition();
+    const location = await Geolocation.getCurrentPosition(
+      {enableHighAccuracy: true, timeout: 10000, maximumAge: 3000},
+    );
     console.log('location = ', location);
 
     this.distance.calcularDistancia(location.coords.latitude, location.coords.longitude);
