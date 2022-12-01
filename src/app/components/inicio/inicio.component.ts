@@ -22,6 +22,7 @@ import { SendemailService } from 'src/app/services/sendemail.service';
 })
 export class InicioComponent {
   coordinates: any;
+  metros:any;
 
   Asignatura: any = [{
     id: "",
@@ -44,7 +45,8 @@ export class InicioComponent {
     maxResults: 5,
   }
 
-  geoAddress: any;
+ geoAddress: number;
+
   resultJSON: any;
 
   constructor(
@@ -52,8 +54,10 @@ export class InicioComponent {
     public alertController: AlertController,
     public distance: DistanceService,
     public firebaseService: FirestoreService) {
-    //this.user.usuario = localStorage.getItem('username')
+    this.user.usuario = localStorage.getItem('username')
+    this.fetchLocation()
 
+    //this.user.usuario = localStorage.getItem('username')
 
     // this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda       
     //   if (this.router.getCurrentNavigation().extras.state) {
@@ -66,6 +70,19 @@ export class InicioComponent {
     // });
 
   }
+  ngOnInit() {
+    this.fetchLocation()
+  }
+
+
+  //Busca asignatura, en colección asignatura
+  // getAsignatura() {
+  //   const path = "asignatura"
+  //   this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', 'PGY4121').subscribe(res => {
+  //     console.log(res);
+  //   });
+  // }
+
 
   //Busca asignatura, en colección asignatura
   // getAsignatura() {
@@ -77,6 +94,7 @@ export class InicioComponent {
 
 
   async checkPermission() {
+    this.user
     try {
       //check or request permission
       const status = await BarcodeScanner.checkPermission({ force: true });
@@ -100,29 +118,34 @@ export class InicioComponent {
       if (!permission) {
         return;
       }
+      
       await BarcodeScanner.hideBackground();
       document.querySelector('body').classList.add('scanner-active');
       this.content_visibility = 'hidden';
       const result = await BarcodeScanner.startScan();
-      console.log(result);
       BarcodeScanner.showBackground();
       document.querySelector('body').classList.remove('scanner-active');
       this.content_visibility = '';
-      if (result?.hasContent) {
+      if ((result?.hasContent)) {
+        
+        const path = "asignatura"
         this.scannedResult = result.content;
-        console.log(this.scannedResult + " resultado barCode");
         //parse resultado a JSON
         this.resultJSON = JSON.parse(this.scannedResult);
-        console.log(this.resultJSON);
-        const { idAsignatura, asignatura, seccion, nombreProfesor, correoProfesor } = this.resultJSON as Record<string, unknown>;
-        const idlottie = 'code';
-        this.firebaseService.insertColectionAsignatura({
-          code: idAsignatura,
-          idlottie,
-          seccion:[seccion],
-          totalclases:'10',
+        let date: Date = new Date();
+        this.resultJSON.fecha = date;
+        if (this.geoAddress<150){
+          var today = new Date();
+          var MES = today.getMonth()+1; 
+          var fecha = today.getDate().toString()+ MES.toString() + today.getFullYear().toString();
+          this.alertaEscaneo("Presente", "Se ha agregado la asistencia a la base de datos")    
+          this.firebaseService.insertColectionAsignatura(this.resultJSON,this.user.usuario,fecha);
 
-        });        
+        }
+        else{
+          this.alertaEscaneo("Error", "Se encuentra demasiado lejos de Duoc, recuerde que debe permitir el acceso a la ubicacion")
+        }
+                
       }
     } catch (e) {
       console.error(e);
@@ -132,6 +155,18 @@ export class InicioComponent {
   //Busqueda en fireStore        
   // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valId).subscribe(res => {
   //   console.log(res);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'seccion', valSeccion).subscribe(res2 => {
+  //   console.log(res2);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreAsignatura', valAsignatura).subscribe(res3 => {
+  //   console.log(res3);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreDocente', valDocente).subscribe(res4 => {
+  //   console.log(res4);
+  // });
+  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'correoDocente', valCorreo).subscribe(res5 => {
+  //   console.log(res5);
   // });
   
   stopScan() {
@@ -150,12 +185,32 @@ export class InicioComponent {
     const location = await Geolocation.getCurrentPosition(
       {enableHighAccuracy: true, timeout: 10000, maximumAge: 3000},
     );
-    console.log('location = ', location);
-
     this.distance.calcularDistancia(location.coords.latitude, location.coords.longitude);
     setTimeout(() => {
       this.geoAddress = this.distance.getDistance();
-    }, 2500);
+   }, 2500);
+    console.log(this.geoAddress,'Valor en metros');
+    
+    return this.geoAddress
+  }
+
+  async alertaEscaneo(titulo: string, msg: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: msg,
+      buttons:
+        [
+          {
+            text: 'Ok',
+            role: 'confirm',
+            cssClass: 'alert-button-confirm',
+            handler: (role) => {
+              console.log('confirmacion', role);
+            },
+          },
+        ],
+    });
+    await alert.present();
   }
 
   // async fetchLocation() {
