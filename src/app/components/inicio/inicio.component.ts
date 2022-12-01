@@ -109,7 +109,6 @@ export class InicioComponent {
       document.querySelector('body').classList.remove('scanner-active');
       this.content_visibility = '';
       if (result?.hasContent) {
-        const path = "asignatura"
         this.scannedResult = result.content;
         console.log(this.scannedResult + " resultado barCode");
         //parse resultado a JSON
@@ -133,18 +132,6 @@ export class InicioComponent {
   //Busqueda en fireStore        
   // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valId).subscribe(res => {
   //   console.log(res);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'seccion', valSeccion).subscribe(res2 => {
-  //   console.log(res2);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreAsignatura', valAsignatura).subscribe(res3 => {
-  //   console.log(res3);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreDocente', valDocente).subscribe(res4 => {
-  //   console.log(res4);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'correoDocente', valCorreo).subscribe(res5 => {
-  //   console.log(res5);
   // });
   
   stopScan() {

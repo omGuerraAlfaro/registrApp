@@ -48,7 +48,6 @@ export class AsistenciaComponent implements OnInit {
 
   }
 
-  //services
   ngOnInit() {
   }
 
