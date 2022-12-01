@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -20,7 +20,7 @@ import { SendemailService } from 'src/app/services/sendemail.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
 })
-export class InicioComponent {
+export class InicioComponent implements OnDestroy, OnInit{
   coordinates: any;
   metros:any;
 
@@ -30,8 +30,8 @@ export class InicioComponent {
   }];
 
   user = {
-    usuario: "",
-    password: ""
+    usuario: '',
+    password: ''
   }
 
   scannedResult: any;
@@ -54,7 +54,7 @@ export class InicioComponent {
     public alertController: AlertController,
     public distance: DistanceService,
     public firebaseService: FirestoreService) {
-    this.user.usuario = localStorage.getItem('username')
+    
     this.fetchLocation()
 
     //this.user.usuario = localStorage.getItem('username')
@@ -72,6 +72,7 @@ export class InicioComponent {
   }
   ngOnInit() {
     this.fetchLocation()
+    this.user.usuario = localStorage.getItem('username')
   }
 
 
@@ -143,7 +144,7 @@ export class InicioComponent {
 
         }
         else{
-          this.alertaEscaneo("Error", "Se encuentra demasiado lejos de Duoc, recuerde que debe permitir el acceso a la ubicacion")
+          this.alertaEscaneo("Error", "Te encuentras demasiado lejos de tu sede Duoc, ó recuerda que debes permitir el acceso a tu ubicación actual")
         }
                 
       }
@@ -156,18 +157,7 @@ export class InicioComponent {
   // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'idAsignatura', valId).subscribe(res => {
   //   console.log(res);
   // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'seccion', valSeccion).subscribe(res2 => {
-  //   console.log(res2);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreAsignatura', valAsignatura).subscribe(res3 => {
-  //   console.log(res3);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'nombreDocente', valDocente).subscribe(res4 => {
-  //   console.log(res4);
-  // });
-  // this.firebaseService.getCollectionParams<AsignaturasService>(path, 'correoDocente', valCorreo).subscribe(res5 => {
-  //   console.log(res5);
-  // });
+
   
   stopScan() {
     BarcodeScanner.showBackground();

@@ -12,8 +12,8 @@ import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 export class HomePage {
 
   user = {
-    usuario: "",
-    password: ""
+    usuario: '',
+    password: ''
   }
 
 
@@ -52,6 +52,7 @@ export class HomePage {
 
   irhome() {
     this.presentAlert2("¿Está Seguro?", "¿Deseas cerrar sesión?")
+    localStorage.setItem('username', '');
   }
 
   async presentAlert2(titulo: string, msg: string) {
