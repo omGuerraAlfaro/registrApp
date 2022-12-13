@@ -130,10 +130,11 @@ export class InicioComponent implements OnDestroy, OnInit{
       if ((result?.hasContent)) {
         
         const path = "asignatura"
+        let date: Date = new Date();
+        
         this.scannedResult = result.content;
         //parse resultado a JSON
         this.resultJSON = JSON.parse(this.scannedResult);
-        let date: Date = new Date();
         this.resultJSON.fecha = date;
         if (this.geoAddress<150){
           var today = new Date();
