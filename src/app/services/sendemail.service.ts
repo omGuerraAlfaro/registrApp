@@ -44,8 +44,7 @@ export class SendemailService {
   }
 
 
-  sendEmailScanner(username: String, nombreProfe: String, correoProfesor: String) {
-    const fecha = new Date();    
+  sendEmailScanner(username: String, nombreProfe: String, correoProfesor: String, fecha: Date) {  
     try {
       const response = fetch("https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send", {
         method: 'POST',
@@ -71,11 +70,13 @@ export class SendemailService {
           content: [
             {
               type: 'text/plain',
-              value: 'Estimado Profesor/a: ' + `${nombreProfe}` + 'El Alumno ' + `${username}` + 'Registró su asistencia' + `${fecha.getFullYear}`
+              value: 'Estimado Profesor/a: ' + `${nombreProfe}` + 'El Alumno ' + `${username}` + ' Registró su asistencia el dia ' + `${fecha}`
             }
           ]
         })
       });
+      console.log('Se en vio correo');
+      
     } catch (err) {
       console.error(err);
     }

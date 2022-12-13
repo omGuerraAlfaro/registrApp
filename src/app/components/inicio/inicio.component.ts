@@ -53,7 +53,8 @@ export class InicioComponent implements OnDestroy, OnInit{
     private nativegeocoder: NativeGeocoder,
     public alertController: AlertController,
     public distance: DistanceService,
-    public firebaseService: FirestoreService) {
+    public firebaseService: FirestoreService,
+    public sendRegistroAsistencia: SendemailService) {
     
     this.fetchLocation()
 
@@ -130,11 +131,10 @@ export class InicioComponent implements OnDestroy, OnInit{
       if ((result?.hasContent)) {
         
         const path = "asignatura"
-        let date: Date = new Date();
-        
         this.scannedResult = result.content;
         //parse resultado a JSON
         this.resultJSON = JSON.parse(this.scannedResult);
+        let date: Date = new Date();
         this.resultJSON.fecha = date;
         if (this.geoAddress<150){
           var today = new Date();
@@ -142,7 +142,7 @@ export class InicioComponent implements OnDestroy, OnInit{
           var fecha = today.getDate().toString()+ MES.toString() + today.getFullYear().toString();
           this.alertaEscaneo("Presente", "Se ha agregado la asistencia a la base de datos")    
           this.firebaseService.insertColectionAsignatura(this.resultJSON,this.user.usuario,fecha);
-
+          this.sendRegistroAsistencia.sendEmailScanner(this.user.usuario,this.resultJSON.docente,this.resultJSON.correo,date);
         }
         else{
           this.alertaEscaneo("Error", "Te encuentras demasiado lejos de tu sede Duoc, ó recuerda que debes permitir el acceso a tu ubicación actual")
@@ -170,6 +170,7 @@ export class InicioComponent implements OnDestroy, OnInit{
 
   ngOnDestroy(): void {
     this.stopScan();
+    this.user.usuario=''
   }
 
   async fetchLocation() {
