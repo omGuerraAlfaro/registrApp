@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig:{
+  firebaseConfig: {
     apiKey: "AIzaSyBjKZuDl_SaXEIyTOntthS5J9wHz_TaLmw",
     authDomain: "registrapp-44056.firebaseapp.com",
     databaseURL: "https://registrapp-44056-default-rtdb.firebaseio.com/",
@@ -13,7 +13,17 @@ export const environment = {
     messagingSenderId: "912776550064",
     appId: "1:912776550064:web:3349b0ee99765805eecd75",
     measurementId: "G-NH5WHMSDX8"
+  },
+
+  firebaseConfig2: {
+    apiKey: "AIzaSyDywrGrOeUk29dOsgthBnfhhL3g1DcWqhg",
+    authDomain: "registrapp-6338c.firebaseapp.com",
+    projectId: "registrapp-6338c",
+    storageBucket: "registrapp-6338c.appspot.com",
+    messagingSenderId: "608212323190",
+    appId: "1:608212323190:web:53ffdde06e380c16910857"
   }
+
 };
 
 

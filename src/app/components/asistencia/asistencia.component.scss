@@ -18,8 +18,9 @@ ion-content.background {
   margin-top: 50px;
 
   .titulo {
+    margin-bottom: 50px;
     font-family: "tahoma";
-    font-size: 100px;
+    font-size: 50px;
     // -webkit-background-clip: text;
     // background-clip: text;
     // -webkit-text-fill-color: transparent;
@@ -34,13 +35,13 @@ ion-content.background {
   margin: 2 auto;
   border-radius: 80px;
   background: rgba(255, 255, 255, 0);
-  
+  padding-top: -8px;
 }
 
 .subt {
   margin-bottom: -3px;
   font-family: "tahoma";
-  font-size: 30px;
+  font-size: 20px;
   color: white;
 }
 

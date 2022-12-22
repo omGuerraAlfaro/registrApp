@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AsistenciaComponent } from 'src/app/components/asistencia/asistencia.component';
 import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
+import { QrgeneratorComponent } from 'src/app/components/qrgenerator/qrgenerator.component';
 
 import { HomePage } from './home.page';
 
@@ -23,7 +24,11 @@ const routes: Routes = [
       {
         path:'asistencia',
         component: AsistenciaComponent
-      },      
+      },  
+      {
+        path:'qrgenerator',
+        component: QrgeneratorComponent
+      },     
     ]
   }
 ];

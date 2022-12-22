@@ -1,17 +1,14 @@
-<ion-content class="background ion-padding" [fullscreen]="true">
+<ion-content class="background ion-padding" [fullscreen]="false">
   <h2 class="ion-text-center contentTitle" #anim>
     <span class="titulo">Asistencia</span>
   </h2>
+<br><br><br>
 
   <ion-slides [options]="slidesConfig" id="container" pager="true">
     <ion-slide *ngFor="let data of arrayAsignaturas">
-      <ion-card class="card" class="cardCenter">
-        <!-- <ng-lottie
-            class="lottie"
-            [options]="options"
-            (animationCreated)="created($event)"
-          ></ng-lottie> -->
 
+      <ion-card class="card" class="cardCenter">
+        
         <lottie-player
           src="../../../assets/animations/{{data.data.idLottie}}.json"
           background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>

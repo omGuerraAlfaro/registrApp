@@ -11,7 +11,7 @@
   </ion-card>
 
   <div class="ion-text-center">
-    <ion-row>
+    <ion-row> 
       <ion-col size="12">
         <button class="buttonQr" (click)="startScan()" color="primary" shape="round">
           <ion-icon name="qr-code-outline"></ion-icon>
@@ -19,15 +19,13 @@
       </ion-col>
       <ion-col size="12">
         <ion-card-subtitle class="textBnt">Registra tu asistencia!</ion-card-subtitle>
-        <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por tu Docente!</ion-card-subtitle>
-        <ion-item *ngIf="scannedResult">
-          <ion-label class="ion-text-wrap">Resultado: {{scannedResult}}</ion-label>
-        </ion-item>
-        <br>
+        <ion-card-subtitle class="textBnt">Escanea el codigo QR desplegado por tu Docente!</ion-card-subtitle>        
+        <br><br>
         <ion-item>
           <ion-button (click)="fetchLocation()">fetch location</ion-button>
-          <ion-label class="ion-text-wrap" *ngIf="geoAddress">GEO {{geoAddress}}</ion-label>
+          <ion-label class="ion-text-wrap ion-text-center" *ngIf="geoAddress">Metros de distancia: {{geoAddress}}</ion-label>
         </ion-item>
+        
       </ion-col>
     </ion-row>
   </div>

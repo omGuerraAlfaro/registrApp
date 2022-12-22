@@ -5,12 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
-
+import { QRCodeModule } from 'angularx-qrcode';
 
 //componentes
 import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
 import { InicioComponent } from 'src/app/components/inicio/inicio.component';
 import { AsistenciaComponent } from 'src/app/components/asistencia/asistencia.component';
+import { QrgeneratorComponent } from 'src/app/components/qrgenerator/qrgenerator.component';
 
 
 @NgModule({
@@ -19,9 +20,10 @@ import { AsistenciaComponent } from 'src/app/components/asistencia/asistencia.co
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    QRCodeModule,
   ],
   
-  declarations: [HomePage, PerfilComponent, InicioComponent, AsistenciaComponent],
+  declarations: [HomePage, PerfilComponent, InicioComponent, AsistenciaComponent, QrgeneratorComponent],
 
 })
 export class HomePageModule { }

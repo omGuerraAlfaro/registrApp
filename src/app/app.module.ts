@@ -21,7 +21,7 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@aw
 @NgModule({
   declarations: [AppComponent,],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, HttpClientModule, AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule],
+    AngularFirestoreModule,],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },NativeGeocoder],
   bootstrap: [AppComponent],
 })

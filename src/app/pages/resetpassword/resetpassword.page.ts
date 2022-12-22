@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import { App } from '@capacitor/app';
+import { Device } from '@capacitor/device';
+import { EmailComposer } from 'capacitor-email-composer';
+import { SendemailService } from 'src/app/services/sendemail.service';
 @Component({
   selector: 'app-resetpassword',
   templateUrl: './resetpassword.page.html',
@@ -13,14 +16,16 @@ export class ResetpasswordPage implements OnInit {
     email: "",
   }
 
-  constructor(public alertController: AlertController, private router: Router) { }
+  constructor(public alertController: AlertController, private router: Router, private sendEmail: SendemailService) { }
 
   ngOnInit() {
   }
 
-  enviar() {
+
+  enviarCorreo() {
     if (this.data.email != "") {
-      this.presentAlert2("ENVIADO", "Se ha enviado un link de recuperación al correo:" + `<br>` +this.data.email)
+      this.presentAlert2("ENVIADO", "Se ha enviado un link de recuperación al correo:" + `<br>` + this.data.email)
+      this.sendEmail.sendEmail(this.data.email);
 
     } else {
       this.presentAlert("ERROR", "Debe ingresar su correo institucional")
@@ -35,15 +40,15 @@ export class ResetpasswordPage implements OnInit {
         [
           {
             text: 'Ok',
-            role:'confirm',
+            role: 'confirm',
             cssClass: 'alert-button-confirm',
             handler: (role) => {
-              console.log('confirmacion', role);              
+              console.log('confirmacion', role);
             },
           },
         ],
-    }); 
-    await alert.present();    
+    });
+    await alert.present();
   }
 
 
@@ -55,20 +60,61 @@ export class ResetpasswordPage implements OnInit {
         [
           {
             text: 'Ok',
-            role:'confirm',
+            role: 'confirm',
             cssClass: 'alert-button-confirm',
             handler: (role) => {
-              console.log('confirmacion', role);              
+              console.log('confirmacion', role);
             },
           },
         ],
     });
     await alert.present();
     let result = await alert.onDidDismiss(); //retorna la data del alert
-    console.log(result);    
-    if(result.role=='confirm'){
+    console.log(result);
+    if (result.role == 'confirm') {
       this.router.navigate(['/login']);
-    }    
+    }
   }
+
+
+
+
+
+  /*   async sendEmail() {
+      const info = await App.getInfo();
+      const deviceInfo = await Device.getInfo();
+      const email = this.data.email;
+      const user = localStorage.getItem('username')
+      const deviceInfos = `${deviceInfo.manufacturer} ${deviceInfo.model}\n${deviceInfo.operatingSystem} ${deviceInfo.osVersion}\n${deviceInfo.webViewVersion}\n${deviceInfo.name}\n}`;    
+      try {
+        const open = await EmailComposer.hasAccount();
+        if (open.hasAccount) {
+          EmailComposer.open({
+            subject: `Support ${info.name} ${info.version}(${info.build})`,
+            body: `El alumno ${user} ha registrado su asistencia...`,
+            to: [email],          
+          });
+        } else {
+          this.presentAlert2("ENVIADO", "Se ha enviado un link de recuperación al correo:" + `<br>` + this.data.email);
+          //this.dialogService.showErrorAlert({message: 'Aucun compte email configuré. Envoyé un mail à ' + email});
+        }
+      } catch (e) {
+        this.presentAlert("ERROR", "Debe ingresar su correo institucional");
+        //this.dialogService.showErrorAlert({ message: 'Impossible to open an email composer. Please send a mail to ' + email });
+      } 
+     }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
