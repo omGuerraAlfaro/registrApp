@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
 
   }
 
-  getAlumnos() {
+  getAlumno() {
     this.api.getAlumnos().subscribe((data) => {
       console.log(data);
       this.alumnos = data;
